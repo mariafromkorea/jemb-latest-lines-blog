@@ -24,3 +24,10 @@ function register_custom_posts_init() {
     );
     register_post_type('lines', $lines_args);
 }
+
+
+add_action( 'init', 'remove_custom_post_comment' );
+
+function remove_custom_post_comment() {
+    remove_post_type_support( 'lines', 'comments' );
+}
