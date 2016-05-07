@@ -18,9 +18,9 @@ function register_custom_posts_init() {
     $lines_args = array(
         'labels'             => $lines_labels,
         'public'             => true,
-        'capability_type'    => 'post',
+        'capability_type'    => 'page',
         'has_archive'        => true,
-        'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions' )
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'page-attributes' )
     );
     register_post_type('lines', $lines_args);
 }
