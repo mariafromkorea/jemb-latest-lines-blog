@@ -50,13 +50,21 @@ get_header(); ?>
 							<?php the_field('lines_quote'); ?>
 							<?php the_field('quote_author'); ?>
 						</div>
+
+						
 					</div>
 					<!-- Content column end -->
 
 					<!-- Sidebar column start -->
 					<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1 sidebar">
 
-						<?php do_action( 'shop_isle_sidebar' ); ?>
+						<div class="bio">
+							<?php 
+							    if ( function_exists( 'get_Sexy_Author_Bio' ) ) {
+							        echo get_Sexy_Author_Bio();
+							    }
+							?>
+						</div>
 
 					</div>
 					<!-- Sidebar column end -->
