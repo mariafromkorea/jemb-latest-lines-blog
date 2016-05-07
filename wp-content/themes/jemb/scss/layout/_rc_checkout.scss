@@ -1,0 +1,741 @@
+//=============================================
+//    RESCMS CHECKOUT PAGE
+//    Style and Variables
+//=============================================
+
+// Fieldset background colors for mobile and desktop
+// By default, they are the same
+//$checkout-fieldset-bg:$muted-color;
+//$checkout-fieldset-bg-desktop:$checkout-fieldset-bg;
+
+// Fieldset border colors, shows for small-up
+//$checkout-fieldset-border-color:rgba(0, 0, 0, .15);
+
+// Alt color used for striping odd/even cells in tables
+//$checkout-fieldset-alt-bg: darken($muted-color, 4%);
+
+// Legend background and text colors for mobile and desktop
+// By default, they are the same
+// legend mobile bg color
+//$checkout-legend-bg:$primary-color;
+
+// legend desktop bg color
+//$checkout-legend-bg-desktop:$checkout-legend-bg; 
+
+// legend mobile text color
+//$checkout-legend-color:$white;
+
+// legend desktop text color 
+//$checkout-legend-color-desktop:$checkout-legend-color; 
+
+// the border color for pricing totals
+//$lineitem-border-color:$muted-color-alt;
+
+//=============================================
+//
+//  Checkout Page styles.
+//-----------------------------------------------------------------//
+
+.checkout-page {
+  // Apply row styles to the first child div of the form
+  // Form reset from RC Core and other random Drupaly stuff
+
+  .l-header {
+    @media #{$medium}{
+      position:fixed;
+      z-index:5;
+
+      .top-bar-container {
+        display:none;
+      }
+      .l-logo-header {
+        padding-top:25px;
+
+          img {
+          display:block;
+          width:auto;
+          height:auto;
+          max-height:35px;
+          transition:all .5s ease-in-out;
+        }
+      }
+    }
+  }
+  .l-service-bar {
+    @media #{$medium} {
+      padding-top:10px;
+
+      li.vrweb_base_back_link {
+        a {
+          @include vrweb-button($color:$service-bar-bg);
+        }
+      }
+    }
+  }
+  .footer-wrapper {
+    display:none;
+  }
+  .l-main {
+    padding-top:0px;
+
+    @media #{$small} {
+      padding-top:20px;
+    }
+
+    @media #{$medium} {
+      padding-top:100px;
+    }
+  }
+  .main.columns{
+    @media #{$small-down}{
+      @include collapse(both);
+    }
+  }
+  #page-title{
+    padding-left:15px;
+    padding-right:15px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-align:center;
+
+    @media #{$small}{
+      max-width:1000px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-bottom:10px;
+    }
+  }
+  //Set border-top-color for table pricing totals
+  .rc-core-order-form .rc-core-order-charges-form .sub-total, 
+  .rc-core-order-confirmation .rc-core-order-charges-form .sub-total, 
+  .rc-item-quote .rc-core-order-charges-form .sub-total,
+  .rc-core-order-form .total, 
+  .rc-core-order-confirmation .total, 
+  .rc-item-quote .total {
+    border-color:$lineitem-border-color;
+  }
+  .rc-core-order-form {
+    background:$checkout-fieldset-bg;
+    margin:0px;
+
+    @media #{$small} {
+      background:$white;
+      padding-bottom:30px;
+    }
+
+    & > div {
+      @include grid-row;
+
+      div fieldset {
+        @include collapse(both);
+        @include grid-column(12);
+        border:none;
+        padding:0px;
+      }
+
+      fieldset,
+      >.form-item-payment-payment-option > label {
+        padding-top:0;
+        margin:0 !important;
+
+        @media #{$small}{
+          margin:10px 0 !important;
+        }
+
+        #edit-payment-payment-option,
+        .fieldset-wrapper{  
+          @include clearfix;
+          @include grid-column(12);
+          padding-top:10px;
+          border-bottom-left-radius:$global-radius;
+          border-bottom-right-radius: $global-radius;
+          border:none;
+          background:$checkout-fieldset-bg;
+          margin-top:0px;
+          width:100%;
+          clear:both;
+
+          @media #{$small} {
+            background:$checkout-fieldset-bg-desktop;
+            border:solid 1px $checkout-fieldset-border-color;
+            @include box-shadow();
+          }
+        }
+      }
+
+      table {
+        width:100%;
+        border:none;
+        background:$transparent;
+
+        thead th,
+        tr.even td,
+        tr.even th {
+          background:$checkout-fieldset-alt-bg;
+        }
+      }
+      .form-type-checkbox,
+      .form-type-radio {
+
+        input {
+          margin-bottom:0px;
+        }
+
+        label {
+          display:inline;
+        }
+      }
+
+      .form-item {
+        margin-right:0 !important;
+      }
+    }
+
+    label {
+      margin-top: 12px;
+    }
+
+    legend, 
+    > div >.form-item-payment-payment-option > label {
+
+      font-size:16px;
+      text-align:center;
+      display:block;
+      width:100%;
+      height:auto;
+      padding:8px 8px 7px;
+      float:left;
+      clear:both;
+      margin:0px;
+      margin-bottom: 0px !important; //need this as separate declaration for payment method
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      background:$checkout-legend-bg;
+      color:$checkout-legend-color;
+      min-height:35px;
+      
+
+      @media #{$small}{
+        border-top-right-radius:$global-radius;
+        border-top-left-radius: $global-radius;
+        color:$muted-color;
+        padding-bottom:5px;
+        background:$checkout-legend-bg-desktop;
+        color:$checkout-legend-color-desktop;
+      }
+    } 
+  }
+
+  // 50% width items
+  //Set which one float left / right and collapse
+  .rc-core-order-form-travelers,
+  #coupon-wrapper,
+  #payments-wrapper,
+  #edit-addresses-primary,
+  .form-item-payment-payment-option {
+    @include grid-column(12);
+    @include min(both);
+
+    @media #{$small}{
+      @include grid-column(6);
+      @include collapse(left);
+    }
+  }
+
+  #charges-wrapper,
+  #edit-addresses-billing,
+  #edit-payment-cc {
+    @include grid-column(12);
+    @include min(both);
+    
+    @media #{$small}{
+      @include grid-column(6);
+      @include collapse(right);
+      float:right;
+      clear:right;
+    }
+  }
+
+  //100% items
+  #edit-comments,
+  #edit-terms {
+    @include grid-column(12);
+    @include collapse(both);
+  }
+
+  // Layout for the Primary Address and children
+  #summary-wrapper {
+    background:$white;
+    margin-bottom:0px;
+    @include grid-column(12);
+    padding-bottom:20px;
+
+    .rc-core-item-name {
+      margin-top:10px;
+      margin-bottom:5px;
+      font-size:20px;
+      color:$secondary-color;
+      text-transform:None;
+      font-weight:700;
+    }
+
+    .panel,
+    .fieldset-wrapper,
+    .rc-entity,
+    .node-vr-listing,
+    .group-left{
+      padding:0;
+    }
+
+    .group-right {
+      text-align:center;
+    }
+    
+    .panel {
+      border:none;
+      text-align:center;
+      padding:8px 0px;
+      margin: 8px 10%;
+      width:80%;
+      clear:both;
+      border-top:solid 1px $lineitem-border-color;
+      border-bottom:solid 1px $lineitem-border-color;
+
+      h5 {
+        font-size:15px;
+        margin:0;
+      }
+    }
+    .rc-lodging-detail {
+      font-size:15px;
+      color:$black;
+      font-weight:700;
+    }
+
+    img {
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .rc-price.total {
+      text-align:center;
+      border-top:none;
+      color:$pricing-color;
+    }
+
+    legend {
+      display:none;
+    }
+
+    .fieldset-wrapper {
+      border:solid 1px $checkout-fieldset-border-color;
+      @include box-shadow();
+      padding-bottom:10px;
+    }
+
+    @media only screen and (min-width:emCalc(600)) {
+      .fieldset-wrapper {
+        padding-right:15px;
+      }
+      .group-left {
+        @include grid-column(5);
+        position:absolute;
+        padding:10px 15px 10px 10px;
+        top:0;
+        left:0;
+      }
+
+      .rc-price.total,
+      .group-right,
+      .panel {
+        @include grid-column(7);
+        float:right;
+        @include min(right);
+      }
+      .panel {
+        margin-left:auto;
+        margin-right:auto;
+      }
+    }
+    @media #{$small} {
+      @include min(both);
+
+      .fieldset-wrapper {
+        padding:0;
+      }
+      .group-right,
+      .group-left {
+        @include grid-column(6);
+      }
+      .group-right {
+
+      }
+      .group-left {
+        padding:0;
+      }
+      .panel {
+        @include grid-column(4);
+        clear:none;
+        border:none;
+        background:$checkout-legend-bg-desktop;
+        position:absolute;
+        top:0px;
+        bottom:0px;
+        right:0px;
+        margin:auto;
+
+        &:before {
+          content:'';
+          display:block;
+          width:0px;
+          height:0px;
+          position:absolute;
+          margin:auto;
+          right:100%;
+          left:auto;
+          top:0px;
+          bottom:0px;
+          border-style:solid;
+          border-width:12px;
+          border-color:$transparent $checkout-legend-bg-desktop $transparent $transparent;
+        }
+
+        h5 {
+          color:$checkout-legend-color-desktop;
+
+          &:first-of-type {
+            margin-top:20px;
+          }
+        }
+      }
+      .rc-price.total {
+        display:none;
+      }
+    }
+
+    @media #{$medium} {
+      .rc-core-item-name {
+        margin-top:20px;
+      }
+      .rc-lodging-detail,
+      .panel h5 {
+        font-size:18px;
+      }
+    }
+  }
+
+  // Traveler Specification
+  .rc-core-order-form-travelers {
+    .fieldset-wrapper {
+      padding-bottom:10px;
+
+      .fieldset-description {
+        font-style:italic;
+        margin-bottom:-5px;
+      }
+      .form-item {
+        @include grid-column(6);
+
+        &.form-item-travelers-0-adult {
+          @include min(left);
+          padding-right:8px;
+        }
+        &.form-item-travelers-0-child {
+          @include min(right);
+          padding-left:8px;
+        }
+      }
+    }
+  }
+
+  // Coupon wrapper
+  #coupon-wrapper {
+    .form-item-coupon-coupon{
+      @include grid-column(7);
+      @include collapse(left);
+      padding-right:8px;
+    }
+
+    button{
+      @include grid-column(5);
+      padding-left:8px;
+      @include vrweb-button($color:$tertiary-color);
+    }
+  }
+
+  // Payments wrapper
+  #payments-wrapper {
+    .fieldset-wrapper{
+      @include collapse(both);
+    }
+  }
+
+  // charges wrapper
+  #charges-wrapper {
+    @include clearfix();
+
+    .fieldset-wrapper {
+      @include collapse(both);
+    }
+
+    .form-type-checkbox{
+      display:block;
+      padding-top:10px;
+    }
+  }
+
+  // Layout for the Primary Address and children
+  #edit-addresses-primary {
+    clear:both;
+  }
+  #edit-addresses-primary, #edit-addresses-billing {
+    @include clearfix();
+
+    .fieldset-wrapper {
+      padding-bottom:1em;
+      @include collapse(right);
+
+      .form-item-addresses-billing-same {
+        float: none;
+      }
+     // 33% elements
+      .form-item-addresses-primary-address-city,
+      #primary-state-wrapper,
+      .form-item-addresses-primary-address-postal,
+      .form-item-addresses-billing-address-city,
+      #billing-state-wrapper,
+      .form-item-addresses-billing-address-postal {
+        @include collapse(left);
+        @include grid-column(4);
+        margin-right: 0
+      }
+
+     // 50% elements
+      .form-item-addresses-primary-firstname,
+      .form-item-addresses-primary-lastname,
+      .form-item-addresses-primary-phone-0,
+      .form-item-addresses-primary-phone-1,
+      .form-item-addresses-billing-firstname,
+      .form-item-addresses-billing-lastname,
+      .form-item-addresses-billing-phone-0,
+      .form-item-addresses-billing-phone-1 {
+        @include collapse(left);
+        @include grid-column(6);
+        margin-right: 0;
+      }
+
+    // 100% elements
+      .form-item-addresses-primary-email,
+      .form-item-addresses-primary-address-line1,
+      .form-item-addresses-primary-address-line2,
+      .form-item-addresses-primary-address-country,
+      .form-item-addresses-billing-email,
+      .form-item-addresses-billing-address-line1,
+      .form-item-addresses-billing-address-line2,
+      .form-item-addresses-billing-address-country {
+        @include collapse(left);
+        @include grid-column(12);
+        margin-right: 0;
+      }
+    }
+  }
+  
+
+  #edit-payment-cc {
+    @media #{$small-down} {
+      @include clearfix();
+      @include collapse(both);
+      @include grid-column(12);
+    }
+
+    .fieldset-wrapper {
+      padding-bottom:15px;
+      @include collapse(right);
+    }
+
+    // 33% elements
+    .form-item-payment-cc-cardcode,
+    .form-item-payment-cc-cardtype,
+    .form-item-payment-cc-cardmonth,
+    .form-item-payment-cc-cardyear {
+      @include collapse(left);
+      @include grid-column(4);
+    }
+
+    // 66% elements
+    .form-item-payment-cc-cardnum,
+    .form-item-payment-cc-cardname {
+      @include collapse(left);
+      @include grid-column(12);
+    }
+    .card-icon {
+      margin-top:35px;
+      display:none;
+      
+      &:first-of-type,
+      &:first-child {
+        display:block;
+      }
+    }
+  }
+  .form-item-payment-payment-option {
+    clear:left;
+
+    #edit-payment-payment-option {
+      @include clearfix;
+      clear:both;
+      padding:15px;
+
+      @media #{$small} {
+        background:$checkout-fieldset-bg-desktop;
+        border-bottom-left-radius:$global-radius;
+        border-bottom-right-radius: $global-radius;
+        border:solid 1px $checkout-fieldset-border-color;
+        @include box-shadow();
+      }
+    }
+  }
+   
+
+  #edit-comments {
+    .fieldset-wrapper {
+      padding-bottom:15px;
+      padding-top:15px;
+    }
+
+    .fieldset-description{
+      padding-bottom:10px;
+    }
+
+    @media #{$small} {
+      margin-bottom:20px !important;
+    }
+  }
+
+  #edit-terms {
+    float:none;
+    margin:auto;
+    @include clearfix();
+
+    .fieldset-wrapper {
+      padding-bottom:10px;
+    }
+
+    .form-item-terms-accepted{
+      @media #{$small-down}{
+        padding-left:15px;
+      }
+    }
+    .form-type-checkbox{
+      padding-left:15px;
+
+      .option {
+        font-size:18px;
+        color:$secondary-color;
+      }
+    }
+    .rc-core-terms-wrapper {
+      width:95%;
+      max-height:400px;
+      margin-left:10px;
+      overflow-y:auto;
+      padding: 10px 21px 10px 10px;
+      margin-top:15px;
+      margin-bottom:10px;
+      background:$white url("../images/scroll-bar-bg.gif") right center no-repeat;
+      height: auto;
+      word-break: break-word;
+      border:$form-component-border;
+
+      @media #{$small} {
+        height: 300px;
+        overflow: auto;
+        border:none;
+        border-bottom: 1px solid #DDD;
+        margin-bottom: emCalc(12);
+        background:$white;
+        line-height:1.4;
+      }
+    }
+
+  }
+
+  #edit-submit {
+    clear: both; // Doesn't work? @include clearfix();
+    @include vrweb-button($color:$success-color);
+    margin:auto;
+    display: block;
+    float:none;
+  }
+}
+
+.page-rescms-order-confirm{
+  #page-title{
+    max-width:800px;
+    margin:auto;
+    padding-top:30px;
+  }
+
+  #thank-you-confirm{
+    max-width:800px;
+    margin:auto;
+    font-size:15px;
+    line-height:1.4;
+
+    h2{
+      font-family:$body-gf;
+      font-size:22px;
+      border-top:solid 1px #000;
+      padding-top:6px;
+      color:#000;
+      font-weight:400;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-top:15px;
+
+      @media #{$small-down}{
+        font-weight:700;
+        font-size:18px;
+      }
+    }
+
+    .rc-core-terms-wrapper{
+      p:last-child{
+        a, a:link, a:visited{
+          @include vrweb-button($color:$tertiary-color);
+          display:block;
+          float:none;
+          margin:auto;
+          max-width:300px;
+          font-size:13px;
+        }
+      }
+    }
+    .rc-order-confirm{
+
+      .rc-entity{
+        @include collapse(left);
+
+        .node-vr-listing{
+          @include collapse(both);
+
+          .group-left{
+            @include collapse(both);
+          }
+          .group-right{
+            @include collapse(right);
+          }
+        }
+      }
+      .rc-price.total{
+        border-top:none !important;
+        font-weight:700;
+        text-align:right;
+        font-size:20px;
+      }
+    }
+  }
+}
+

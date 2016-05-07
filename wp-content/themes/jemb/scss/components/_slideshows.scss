@@ -1,0 +1,35 @@
+.rsDefault, .rsDefault .rsOverflow, .rsDefault .rsSlide, .rsDefault .rsVideoFrameHolder, .rsDefault .rsThumbs{
+	background:$muted-color;
+
+	@media #{$small} {
+		background:$white;
+	}
+}
+
+/*====================================== 
+	Homepage Slideshow
+======================================*/
+
+.front .view-slideshow {
+  position: relative;
+  //	$fade-out: set to true for slideshow fade out, adjust gradient color values if needed in the mixin--works best if you are using the default template instead of full slideshow 
+  // 	$overlay: set to true for a drop shadow under the header overlaying the slideshow for more depth, defaults to flat ui with shadow disabled
+  @include slideshow-styles($fade-out:false, $overlay:true); 
+
+  .vrfusion-rs-caption{
+    display:none; //no captions ont he homepage
+  }
+}//front 
+
+
+/*====================================== 
+	Property Details Page Slideshow
+======================================*/
+
+//Remove padding from property details page slideshow
+.node-vr-listing.view-mode-full{
+	.section-container.tabs > section > .content, .section-container.tabs > .section > .content{
+		padding:0 !important;
+	}
+}
+	

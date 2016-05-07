@@ -1,0 +1,51 @@
+//============================
+// Weather Widgets
+//============================
+
+//BTM Weather styles
+
+.weather-widget {
+
+  .feed {
+    &.current-conditions {
+      margin-bottom: 0.5em;
+
+      .current-image,
+      .current-temp {
+        display: inline-block;
+        padding: 0 1em;
+      }
+    }
+
+    &.feed.point-forecast {
+      margin-top: 0.5em;
+
+      .inline-list > li {
+        text-align: center;
+        margin-left: 0.9em;
+      }
+    }
+  }
+}
+
+// Contrib weather styles
+
+.contrib-weather {
+
+  .weather-image-wrapper {
+    float: left;
+
+    .weather-image{
+      width: emCalc(51);
+    }
+  }
+
+  .weather-condition {
+    margin-bottom: emCalc(5);
+    font-weight: 300;
+  }
+
+  .weather-temp {
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,36 @@
+//============================
+// Recommended content
+//============================
+
+.view-mode-teaser.node-sticky {
+  border: none;
+  box-shadow: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+  .vrweb-featured-wrapper {
+    color: $tertiary-color;
+    font-weight: 600;
+
+    i {
+      color: $tertiary-color;
+      font-size: 1.5em;
+    }
+  }
+}
+
+
+//============================
+// Popular Searches
+//============================
+
+
+.front {
+  .view-id-vr_listing_featured_amenities.view-display-id-block_popular_searches {
+    .table {
+      display: table;   /* Allow the centering to work */
+      margin: 0 auto;
+      padding: 26px 0 12px 0;
+    }
+  }
+}

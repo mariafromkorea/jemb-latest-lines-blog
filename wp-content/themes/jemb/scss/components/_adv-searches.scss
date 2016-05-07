@@ -1,0 +1,439 @@
+//=============================================
+//    ADVANCED SEARCH FORM
+//    Styles and Variables
+//    See vrweb_settings for all variables.
+//=============================================
+
+//$off-canvas-mobile-search:true;
+//$off-canvas-trigger-height:50px;
+//$mobile-expanded-menu-height:355px;
+
+//=============================================
+//
+//Off Canvas Mobile
+//-------------------------------------------//
+.show-search {
+  overflow:hidden;
+}
+.off-canvas-trigger {
+	display:none;
+  left:0px;
+  top:0;
+
+	a {
+		display:block;
+		width:100%;
+		height:$off-canvas-trigger-height;
+    background-color:$secondary-color;
+		background:$tertiary-color;
+		text-align:center;
+		color:$white;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-top: 8px;
+    font-weight: 700;
+    letter-spacing: .075em;
+    background-image:linear-gradient(lighten($secondary-color, 10%), $secondary-color 10%, lighten($secondary-color, 10%) 90%, $secondary-color);
+    border-radius:3px;
+    border-color:lighten($secondary-color, 5%) lighten($secondary-color, 5%) $secondary-color $secondary-color;
+
+    &:before {
+      content:'';
+      display:inline-block;
+      width: 30px;
+      height: 35px;
+      background-image:url("../images/icon-x-white.svg");
+      background-size: 20px;
+      background-position: 5px center;
+      background-repeat:no-repeat;
+      margin-right: 5px;
+      margin-bottom: -10px;
+      transform:rotate(45deg);
+      transition:transform .15s ease-out;
+
+      .show-search & {
+        background-image:url("../images/icon-x-white.svg");
+        background-size: 20px;
+        background-position: 5px center;
+        transform:rotate(180deg);
+      }
+    }
+    i {
+      display: inline-block;
+      width: 30px;
+      height: 12px;
+      background: rgba(0, 0, 0, .2) url("../images/more-actions.svg") center no-repeat;
+      margin-left: 8px;
+      background-size: 23px auto;
+      border-radius:2px;
+    }
+    &:hover, &:active {
+      //background-color:$secondary-color;
+      background-image:none;
+    }
+	}
+}
+.search-results-page {
+	.mobile-jump-link {
+		padding-bottom:15px;
+
+		a {
+			@include vrweb-button($display:block);
+			@include content-box(15px);
+			border-radius:0px;
+			height:18px;
+		}
+	}
+	@if $off-canvas-mobile-search == true {
+		.mobile-jump-link {
+			display:none !important;
+		}
+		@media #{$small-down} {
+			.off-canvas-trigger {
+				display:block;
+        position:absolute;
+        right:0px;
+        //left:auto;
+        padding:8px 8px;
+        z-index:5;
+        background:linear-gradient(rgba($white, 1.0), rgba($white, .3) 95%, rgba($white, 0));
+        background:rgba($white, .8);
+
+        &:not(.active) {
+          top:$topbar-touch-height !important;
+        }
+
+        &.active {
+          position:fixed;
+          @include box-shadow();
+        }
+			}
+			aside.sidebar-first {
+				position:fixed;
+				//left:-100%;
+				//height:100%;
+				//width:88%;
+				//top:$topbar-touch-height+$off-canvas-trigger-height;
+				//transition:left .25s ease-out;
+				@include min(both);
+				background:$search-bg;
+        height:0;
+        overflow:hidden;
+        padding-left:20px;
+        padding-right:20px;
+
+				.block-title {
+					display:none;
+				}
+			}
+			.main.columns {
+				//left:0px;
+        padding-top:60px;
+			}
+      //
+      // adjust top margin for expanded mobile menu
+      //------------------------------------------------//
+      .expanded {
+        aside.sidebar-first {
+          top:$off-canvas-trigger-height+$mobile-expanded-menu-height;
+        }
+      }
+      //
+      //  Styles for active off canvas search
+      //------------------------------------------------//
+
+
+      &.show-search {
+      .off-canvas-trigger {
+          position:fixed;
+          width:100%;
+          top:0px !important;
+          transition:top .05s ease-out;
+          background:$search-bg;
+
+          a {
+            background:$search-bg;
+          }
+        }
+        aside.sidebar-first {
+          left:-20px;
+          right:-20px;
+          top:$topbar-touch-height !important;
+          bottom:-20px;
+          z-index:20;
+          width:auto;
+          height:auto;
+          overflow-y:auto;
+        }
+        .main.columns {
+          // position:fixed;
+          // top:$topbar-touch-height+$off-canvas-trigger-height;
+          // left:88%;
+     //      opacity:1.0;
+
+        }
+        .footer-wrapper {
+          display:none;
+        }
+        //
+        //  Styles for active off canvas search
+        //------------------------------------------------//
+        &.expanded {
+          .off-canvas-trigger {
+            top:$mobile-expanded-menu-height;
+          }
+
+          .main.columns {
+            top:$off-canvas-trigger-height+$mobile-expanded-menu-height;
+          }
+        }
+      }
+    }
+    &.hide-search {
+      .hide-search {
+        aside.sidebar-first {
+          //opacity:0;
+        }
+        .main.columns {
+          opacity:0;
+          -webkit-animation: fade-in .5s .25s forwards;
+          -moz-animation:    fade-in .5s .25s forwards;
+          -o-animation:      fade-in .5s .25s forwards;
+          animation:         fade-in .5s .25s forwards;
+        }
+      }
+		}// Small Down
+	} // @if search -- true
+}
+.search-results-page {
+  @media #{$small-down} {
+    
+  }
+}
+aside.sidebar-first {
+  section {
+    height:100%;
+  }
+  form {
+    overflow-y:scroll;
+    height:100%;
+    padding-bottom:200px;
+
+    @media #{$small} {
+      padding-bottom:0px;
+    }
+  }
+}
+// Layouts for search forms
+aside.sidebar-first,
+aside.sidebar-second {
+	 /*======================================
+    Sidebar VR Search
+  ======================================*/
+  .block-views-c300e9cbba1c181da2a30908836f365e,
+  .block-views-11cd0f38c03fc01f6062bd5ec861b7a4 {
+  	background:$search-bg;
+
+  	h4.block-title {
+  		background:$search-block-title-bg;
+
+  		&:before {
+				border-top-color:$search-block-title-bg;
+			}
+  	}
+
+  	@media #{$small} {
+  		background:$search-bg-desktop;
+
+  		h4.block-title {
+  			background:$search-block-title-bg-desktop;
+
+  			&:before {
+  				border-top-color:$search-block-title-bg-desktop;
+  			}
+  		}
+  	}
+  }
+  #views-exposed-form-vacation-rental-listings-page-quick-search,
+  #views-exposed-form-vacation-rental-listings-page-teasers,
+  #views-exposed-form-vacation-rental-listings-page-map-results {
+    .views-exposed-form {
+      padding:0px 15px 15px;
+      //    background-color: $sidebar-bg;
+      border-bottom-right-radius: $global-radius;
+      border-bottom-left-radius: $global-radius;
+
+      label,
+      .description {
+        color:$search-label-color;
+
+        @media #{$small} {
+          color:$search-label-color-desktop;
+        }
+      }
+
+    }
+    margin-bottom: 0px;
+    // Base styles for the sidebar advanced search.
+    .views-widget-filter-avail_filter label,
+    .views-exposed-widgets > .views-exposed-widget > label {
+
+    }
+
+    .views-exposed-widget {
+      @include clearfix();
+
+      #edit-submit-vacation-rental-listings {
+        @include vrweb-button($color:$tertiary-color);
+        margin-bottom: 0px;
+      }
+    }
+    .views-reset-button {
+      width: 100%;
+      text-align: center;
+
+      #edit-reset {
+        display: inline;
+        text-decoration: underline;
+        background: none;
+        color: $primary-color;
+        margin-bottom: 0px;
+
+        &:hover, &:active {
+          background: none;
+          color: $primary-color;
+          text-decoration: none;
+        }
+      }
+    }
+    .views-exposed-widget, #edit-avail-filter-wrapper .form-item {
+      label {
+        margin-top: 15px;
+      }
+    }
+    .views-widget-sort-by {
+      @include clearfix();
+    }
+
+    #edit-beds-numeric-wrapper,
+    .form-item-avail-filter-rcav-begin,
+    .form-item-avail-filter-rcav-adult,
+    .views-widget-filter-beds_numeric {
+      @include grid-column(6);
+      @include collapse(left);
+      padding-right: 7px;
+      margin-bottom: 10px;
+    }
+
+    #edit-baths-numeric-wrapper,
+    .form-item-avail-filter-rcav-end,
+    .form-item-avail-filter-rcav-child,
+    .views-widget-filter-baths_numeric {
+      @include grid-column(6);
+      @include collapse(right);
+      padding-left: 7px;
+      margin-bottom: 10px;
+    }
+
+    .form-item-avail-filter-rcav-begin,
+    .form-item-avail-filter-rcav-end {
+      margin-bottom: 10px;
+      @media #{$tiny-down}{
+        @include grid-column(12);
+        @include collapse(both);
+
+        label {
+          padding-left: 0px;
+          background-image: none;
+        }
+      }
+    }
+    @if $hide-adults-children-on-quick-search == true {
+      .form-item-avail-filter-rcav-child,
+      .form-item-avail-filter-rcav-adult {
+        display:none !important;
+      }
+    }
+    #edit-field-vr-featured-amenities-tid-wrapper {
+      clear: both;
+      padding-top: 10px;
+      margin-bottom: emCalc(15);
+      label[for="edit-field-vr-featured-amenities-tid"] {
+        display: none;
+      }
+      .form-item-field-vr-featured-amenities-tid {
+        .form-item {
+          margin-bottom: emCalc(5);
+        }
+        .form-type-bef-checkbox {
+          @include grid-column(12);
+          padding: 6px 0px;
+
+          @media all and (max-width: 940px) {
+            @include grid-column(12);
+            @include collapse(both);
+          }
+          label {
+            display: inline;
+            font-size: 18px;
+            font-weight: 300;
+          }
+        }
+      }
+      input[type="checkbox"], input[type="radio"], select {
+        margin: 0;
+      }
+    }
+  }
+
+  .sidebar-second #views-exposed-form-vacation-rental-listings-page-quick-search {
+    .views-exposed-widget {
+      @include clearfix();
+
+      #edit-submit-vacation-rental-listings {
+        @include vrweb-button($color: $tertiary-color);
+      }
+    }
+    .views-exposed-widget, #edit-avail-filter-wrapper .form-item {
+      label {
+        margin-top: 15px;
+      }
+    }
+    .views-widget-sort-by {
+      @include clearfix();
+    }
+
+    #edit-beds-numeric-wrapper,
+    .form-item-avail-filter-rcav-begin,
+    .form-item-avail-filter-rcav-adult {
+      @include grid-column(6);
+      @include collapse(left);
+      padding-right: 7px;
+    }
+
+    #edit-baths-numeric-wrapper,
+    .form-item-avail-filter-rcav-end,
+    .form-item-avail-filter-rcav-child {
+      @include grid-column(6);
+      @include collapse(right);
+      padding-left: 7px;
+    }
+
+    .form-item-avail-filter-rcav-begin,
+    .form-item-avail-filter-rcav-end {
+
+      @media #{$tiny-down}{
+        @include grid-column(12);
+        @include collapse(both);
+
+        label {
+          padding-left: 0px;
+          background-image: none;
+        }
+      }
+    }
+    .views-submit-button {
+      margin-top: 15px;
+    }
+  }
+}

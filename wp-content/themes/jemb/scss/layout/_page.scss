@@ -1,0 +1,121 @@
+html {
+	//overflow-y:hidden;
+}
+body {
+	//overflow-y:hidden;
+}
+body,
+html {
+	//overflow-x:hidden;
+	position:relative;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+
+	* {
+		line-height:$document-line-height;
+		box-sizing:border-box;
+	}
+
+	p {
+		line-height:$paragraph-line-height;
+	}
+}
+#document, #page-content {
+	min-height:100%;
+	height:auto;
+}
+
+.l-main {
+	width:100%;
+	position:relative;
+
+	@media #{$small} {
+		padding-top:30px;
+	}
+}
+
+.main.columns {
+	padding-top:20px;
+
+	@media #{$small} {
+		padding-top:0px;
+	}
+}
+.page-header {
+	@include grid-column(12);
+}
+
+/**
+* 	Adjust grid as browser collapses so the 
+* 	sidebar doesnt get too narrow
+**/
+body.sidebar-first,
+body.sidebar-second {
+	@media #{$small} {
+		.sidebar-first {
+			@include min(right);
+		}
+		.sidebar-second{
+			@include min(left);
+		}
+	}
+	@media only screen and (min-width:emCalc(768)) and (max-width:emCalc(849)) {
+		.sidebar-first,
+		.sidebar-second {
+			width:35%;
+		}
+		.main.columns {
+			width:65%;
+		}
+
+		.page-header {
+			width:65%;
+			float:right;
+		}
+	}
+
+	@media only screen and (min-width:emCalc(850)) {
+		.page-header {
+			@include grid-column(9);
+			float:right;
+		}
+	}		
+}
+body.sidebar-first {
+	@media #{$small} {
+		.main.columns {
+			padding-left:25px;
+		}
+	}
+}
+body.sidebar-second {
+	@media #{$small} {
+		.main.columns {
+			padding-right:25px;
+		}
+	}
+}
+/**
+ * Maintenance page.
+ */
+body.maintenance-page {
+  #page-wrapper {
+    text-align: center;
+  }
+  .l-header {
+    padding-bottom: em-calc(15px);
+  }
+  #main-wrapper {
+    padding: em-calc(30px 0);
+  }
+}
+//Basic Page Styles
+.node-page.view-mode-full {
+	.group-header,
+	.group-footer,
+	.group-content {
+		@include min(both);
+	}	
+}

@@ -1,0 +1,818 @@
+//=============================================
+//    AVAILABILITY CALENDARS 
+//    Style and Variables
+//=============================================
+
+/**
+*   Edit these variables to update the calendar 
+*   color theme for popup calendars and details-page
+*   availability tab. 
+**/
+
+//Background Color for the calendars and <thead>
+//$vrcalendar-bg: $primary-color;
+
+//Base color theme used for the unselectable cells
+//$vrcalendar-base-bg: #d6d6d6;
+//$vrcalendar-base-text-color: #959595;
+
+//Base color theme used for the availbale cells
+//$vrcalendar-available-bg: $white;
+//$vrcalendar-available-text-color: $tertiary-color;
+
+//Calendar Navigation
+//$vrcalendar-link-color:white;
+//$vrcalendar-link-color-over:$tertiary-color;
+
+
+/**
+*   You dont really need to edit these variables,
+*   these just link up all the styles
+**/
+
+// Out
+//$vrcalendar-top-out: $vrcalendar-available-bg;
+//$vrcalendar-bottom-out: $vrcalendar-base-bg;
+//$vrcalendar-deg-out: 145deg;
+
+// In
+//$vrcalendar-top-in: $vrcalendar-base-bg;
+//$vrcalendar-bottom-in: $vrcalendar-available-bg;
+//$vrcalendar-deg-in: 145deg;
+
+//Selected
+//$vrcalendar-selected-date: $vrcalendar-available-text-color;
+//$vrcalendar-selected-date-color:$vrcalendar-available-bg;
+
+//Border color
+//$vrcalendar-border-color:$vrcalendar-base-text-color;
+
+//=============================================
+//
+//  Booking Calendar styles.
+//  All Styles for Popup and Availability Calendars 
+//-----------------------------------------------------------------//
+#ui-datepicker-div{
+  z-index:9999 !important;
+}
+// Override the default width of jQuery UI embedded date picker
+.rc-avail-embed .ui-datepicker {
+  width: 100%;
+  max-width:17em;
+  padding: .2em .2em 0;
+  margin: 0 auto;
+}
+
+// Sets default
+.ui-datepicker-calendar   {
+  .av-X {
+    .ui-state-default{
+      background: #ccc url('../images/strike-through-alt.png') center no-repeat;
+      color: $vrcalendar-available-text-color;
+    }
+  }
+}
+
+// Sets available
+.ui-datepicker-calendar {
+  .av-O{
+    .ui-state-default {
+      background: $vrcalendar-available-bg;
+      color: $vrcalendar-available-text-color;
+    }
+  }
+}
+
+// Sets top half booked
+.ui-datepicker-calendar   {
+  .av-OUT{
+    .ui-state-default {
+      //@include background-image(linear-gradient(left, #2ac363, #cd8c14, #9c4cc2));
+      @include striped-bg-out($vrcalendar-top-out, $vrcalendar-bottom-out, $vrcalendar-deg-out);
+    }
+  }
+}
+
+// Sets bottom half booked
+.ui-datepicker-calendar   {
+  .av-IN{
+    .ui-state-default {
+      @include striped-bg-in($vrcalendar-top-in, $vrcalendar-bottom-in, $vrcalendar-deg-in);
+    }
+  }
+}
+
+
+// Date picker selected dates
+.ui-datepicker-calendar .av-S,
+.ui-datepicker-calendar .av-BEG,
+.ui-datepicker-calendar .av-END {
+  opacity: 1;
+}
+
+.ui-datepicker-calendar .av-S .ui-state-default,
+.ui-datepicker-calendar .av-BEG .ui-state-default,
+.ui-datepicker-calendar .av-END .ui-state-default {
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-top-color: $vrcalendar-selected-date;
+  border-bottom-color: $vrcalendar-selected-date;
+  font-weight: normal;
+  color: $vrcalendar-selected-date-color;
+  background: $vrcalendar-selected-date;
+}
+.ui-datepicker-calendar .av-0.av-BEG .ui-state-default,
+.ui-datepicker-calendar .av-0.av-END .ui-state-default {
+  background: $vrcalendar-selected-date;
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
+
+// Date picker - bottom text styles
+
+@media #{$tiny-down}{
+  .front {
+    .rc-avail-embed-msg {
+      padding: 0;
+      text-align: center;
+
+      .mns {
+        display: inline-block;
+        font-style: italic;
+        width: 100%;
+      }
+
+      .start-over {
+        display: inline-block;
+        @include label;
+        font-weight: normal;
+        margin: emCalc(5);
+      }
+    }
+  }
+}
+//Datepicker Style Overrides
+#ui-datepicker-div, .ui-datepicker{
+  border:solid 1px $vrcalendar-bg;
+  background:$vrcalendar-bg;
+  border-radius:$global-radius;
+  padding:0px;
+  box-shadow:0px -5px 20px rgba(0, 0, 0, .15);
+
+  table {
+    border:none;
+    margin-bottom:0px;
+
+    thead {
+      border-bottom:solid 1px $vrcalendar-border-color;
+    }
+
+    td {
+      padding:0px;
+      background:$vrcalendar-base-bg;
+
+      /*.ui-state-default {
+        background:$white;
+        color:$success-color;
+        font-weight:700;
+        
+        &.ui-state-active {
+          background:$primary-color;
+          color:$white;
+        }
+      }*/
+      &.av-O {
+        .ui-state-default {
+          //font-weight:700;
+
+          &:hover, &:active {
+            color:$vrcalendar-selected-date-color;
+            background:$vrcalendar-selected-date;
+          }
+        }
+      }
+      &.ui-state-disabled {
+        opacity:1.0;
+
+        .ui-state-default {
+          background:$vrcalendar-base-bg;
+          color:$vrcalendar-base-text-color;
+          font-weight:400;
+
+          &:hover, &:active {
+            background:$vrcalendar-base-bg;
+            color:$vrcalendar-base-text-color;
+            font-weight:400;
+          }
+        }
+        &.av-O {
+          .ui-state-default {
+            //background:$white;
+            //color:$success-color;
+            //font-weight:700;
+          }
+        }
+        &.av-BEG,
+        &.av-S{
+          .ui-state-default {
+            color:$vrcalendar-selected-date-color;
+            background:$vrcalendar-selected-date;
+            //font-weight:700;
+          }
+        }
+        &.av-IN {
+          .ui-state-default {
+            color:$vrcalendar-base-text-color;
+            font-weight:400;
+            @include striped-bg-in($vrcalendar-top-in, $vrcalendar-bottom-in, $vrcalendar-deg-in);
+          }
+        }
+        &.av-OUT {
+          .ui-state-default {
+            color:$vrcalendar-base-text-color;
+            font-weight:400;
+            @include striped-bg-out($vrcalendar-top-out, $vrcalendar-bottom-out, $vrcalendar-deg-out);
+          }
+        }
+      }
+    }
+  }
+
+  .ui-datepicker-header{
+    background:transparent;
+    border:none;
+    height:44px;
+
+    .ui-datepicker-title{
+      color:$muted-color;
+      padding-top:5px;
+
+      select{
+        margin-top:-5px;
+      }
+    }
+    .ui-datepicker-next, .ui-datepicker-prev{
+      .ui-icon{
+        background:none;
+        width:0px;
+        height:0px;
+        border-width:8px;
+        border-style:solid;
+        margin:auto;
+        top:11px;
+        transition: border-color .35s ease-in-out;
+      }
+    }
+    .ui-datepicker-next .ui-icon{border-color:transparent transparent transparent $vrcalendar-link-color;}
+    .ui-datepicker-next-hover{
+      background:transparent;
+      border:none;
+      right:2px;
+      top:2px;
+
+      .ui-icon{
+        border-color:transparent transparent transparent $vrcalendar-link-color-over;
+      }
+    }
+    .ui-datepicker-prev .ui-icon{border-color:transparent $vrcalendar-link-color transparent transparent;left:0px;}
+    .ui-datepicker-prev-hover{
+      background:transparent;
+      border:none;
+      left:2px;
+      top:2px;
+
+      .ui-icon{
+        border-color:transparent $vrcalendar-link-color-over transparent transparent;
+      }
+    }
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border:none;
+    border-right:solid 1px $vrcalendar-border-color;
+    border-bottom:solid 1px $vrcalendar-border-color;
+    padding:6px 3px;
+    text-align:center;
+  }
+  tr:last-child,
+  tr:first-child {
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+      border-bottom:none;
+    }
+  }
+  tr:nth-of-type(2),
+  tr:first-child + tr{
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+      border-top:solid 1px $vrcalendar-border-color;
+    }
+  }
+  td:last-child,
+  td:nth-of-type(7) {
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+      border-right:none;
+    }
+  }
+  th{
+    background:$vrcalendar-bg;
+    font-weight:400;
+    color:$white;
+  }
+}
+.group-vr-avail, .view-display-id-single_map_bubble{
+  .field-group-format-wrapper{
+    @include clearfix;
+  }
+  .rcav-key{
+    margin-left:10px;
+    margin-top:15px;
+  }
+    .rcav-calendar{
+      @include grid-column(12);
+      @include collapse(both);
+      clear:both;
+      background:$white;
+      margin-top:20px;
+
+      @media #{$small-down}{
+        display:none;
+      }
+
+      /*&:before{
+          content:'';
+          display:block;
+          width:100%;
+          height:1px;
+          background:$primary-color;
+          margin-top:-15px;
+          margin-bottom:30px;
+        }*/
+
+      td{
+        border-color:darken($muted-color, 8%) !important;
+        width:14%;
+        line-height:1.4;
+        padding:2px 1px;
+      }
+
+      .rcav-month.rc-calendar{
+        //@include grid-column(2);
+        //@include collapse(left);
+        padding-left:7px;
+        padding-right:7px;
+        display:block;
+        border:none;
+        float:left;
+        posiiton:relative;
+        float:left;
+        margin-bottom:0px;
+        height:180px;
+
+
+        /*@media only screen and (max-width:1200px){
+          &:nth-of-type(5), &:nth-of-type(9){
+            clear:both;
+          }
+        }*/
+        
+
+        caption{
+          background:$muted-color;
+          text-align:center;
+          display:block;
+          font-size:11px;
+          font-weight:600;
+          padding:4px 0px 2px 0px;
+          color:#333;
+          border:solid 1px darken($muted-color, 8%);
+          margin-top:-1px;
+        }
+        tbody{
+          display:block;
+          width:100%;
+          line-height:1.4;
+
+          th{
+            font-size:11px;
+            &.day-1, &.day-2, &.day-3, &.day-4, &.day-5, &.day-6, &.day-7, &.week{
+              background:#fff;
+              color:$secondary-color;
+              border-bottom:solid 1px darken($muted-color, 8%);
+            }
+          }
+          td{
+            font-size:10px;
+            color:$black;
+            background:#fff;
+
+            &.av-O{
+              background:$tertiary-color;
+              &.av-IN{
+                background:url("../images/av-in-bg.gif") center no-repeat;
+              }
+            }
+            &.av-X{
+              background:$tertiary-color url('../images/strike-through.png') no-repeat;
+              background-position:center;
+
+              &.av-OUT{
+                background:url("../images/av-out-bg.gif") center no-repeat;
+              }
+            }
+
+            &.week{
+              .rc-price{
+                font-size:11px;
+              }
+              .rc-price-type{
+                display:none;
+              }
+            }
+          }
+        }
+      }//calendar, month
+      
+    }
+    .rcav-key{
+      margin-bottom:0px;
+
+      caption{display:none;}
+
+      &, tbody, tr, td{
+        border:none;
+        color:#333;
+
+        &.label{
+          padding-left:8px;
+          font-size:14px;
+          font-weight:400;
+        }
+        &.av-O{
+          background:$tertiary-color;
+          border:solid 1px darken($muted-color, 8%);
+          &.av-IN{
+            background:url("../images/av-in-bg.gif") center no-repeat;
+          }
+        }
+        &.av-X{
+          background:$tertiary-color url('../images/strike-through.png') no-repeat;
+          background-position:center;
+          border:solid 1px darken($muted-color, 8%);
+          &.av-OUT{
+            background:url("../images/av-out-bg.gif") center no-repeat;
+          }
+        }//av-x
+      }    
+    }
+  }
+  .group-availability {
+    .rc-calendar.rcav-month {
+      tbody{
+        //display:inline-block;
+        //border:solid 1px $muted-color-alt;
+      }
+      caption {
+        border:solid 1px $vrcalendar-bg;
+        background:$vrcalendar-bg;
+        padding:8px 5px;
+        font-family:$head-gf;
+        font-weight:400;
+        color:$muted-color;
+      }
+      .rc-item-price .rc-price {
+        color:$secondary-color;
+        font-weight:400;
+      }
+      tr:first-child,
+      tr:nth-of-type(1) {
+        padding:5px 0px;
+        height:30px;
+      }
+      th {
+        background:$vrcalendar-bg;
+        border-color:$vrcalendar-bg;
+        color:$muted-color;
+        padding:0;
+        border-bottom:solid 1px $vrcalendar-bg;
+
+        &.day-7{
+          border-left:solid 1px $vrcalendar-bg;
+        }
+        &.day-6 {
+          border-right:solid 1px $vrcalendar-bg;
+        }
+      }
+      td {
+        padding:0px;
+        background:$vrcalendar-base-bg;
+        border-color:$vrcalendar-border-color;
+        color:$vrcalendar-base-text-color;
+        font-weight:400;
+        //border-right:none;
+        //border-bottom:none;
+
+        &:first-child,
+        &:nth-of-type(1){
+          //border-left:none;
+        }
+      }
+      
+      td.av-O {
+        font-weight:400;
+      }
+
+      td.ui-state-disabled {
+        opacity:1.0;
+        background:$vrcalendar-base-bg;
+        color:$vrcalendar-base-text-color;
+        font-weight:400;
+      }
+      td.av-O {
+          background:$vrcalendar-available-bg;
+          color:$vrcalendar-available-text-color;
+          font-weight:400;
+      }
+      td.av-BEG,
+      td.av-S{
+          color:$secondary-color;
+          background:#a4ffaa;
+          font-weight:400;
+      }
+      td.av-X {
+        .rc-item-price .rc-price {
+          color:$transparent;
+        }
+        &.av-OUT {
+            color:$vrcalendar-available-text-color;
+            font-weight:400;
+
+            .rc-item-price .rc-price {
+              color:$secondary-color;
+            }
+          }
+      }
+      td.av-IN {
+          color:$vrcalendar-base-text-color;
+          font-weight:400;
+          @include striped-bg-in($vrcalendar-top-in, $vrcalendar-bottom-in, 127deg);
+
+          &.av-O {
+            color:$vrcalendar-available-text-color;
+            font-weight:400;
+          }
+      }
+      td.av-OUT {
+          color:$vrcalendar-base-text-color;
+          font-weight:400;
+          @include striped-bg-out($vrcalendar-top-out, $vrcalendar-bottom-out, 127deg);
+
+          
+      }
+    }
+  }
+.node-vr-listing.view-mode-full {
+  .group-availability {
+    > .content {
+      @include min(both);
+    }
+    .rcav-key {
+      border: none;
+      background: none;
+
+      @media #{$small-down}{
+        display: block;
+        max-width: 100%;
+        overflow-y: auto;
+      }
+      caption {
+        display: none;
+      }
+      td {
+        color: $black;
+        padding: 9px;
+        font-size: 16px;
+
+        &.label {
+          border: none;
+
+          @media only screen and (max-width:emCalc(670)){
+            display:block;
+            float:left;
+            clear:none;
+            width:60%;
+          }
+        }
+
+        &.day {
+          border: solid 1px $vrcalendar-base-text-color;
+          border-radius: $global-radius;
+
+          @media only screen and (max-width:emCalc(670)) {
+            display:block;
+            float:left;
+            clear:both;
+            width:40%;
+            margin-bottom:10px;
+          }
+        }
+        &.av-O {
+          background: $vrcalendar-available-bg;
+          color: $vrcalendar-available-text-color;
+        }
+        &.av-X {
+          background: $vrcalendar-base-bg;
+          color: $vrcalendar-base-text-color;
+        }
+        &.av-IN {
+          @include striped-bg-in($vrcalendar-top-in, $vrcalendar-bottom-in, 127deg);
+        }
+        &.av-OUT {
+          @include striped-bg-out($vrcalendar-top-out, $vrcalendar-bottom-out, 127deg);
+          color: $vrcalendar-available-text-color;
+        }
+      }
+    }
+    .rcjs-controls {
+      @include clearfix;
+      height:auto;
+      padding: 8px 0px 5px 0px;
+      text-align:center;
+
+      @media #{$small} {
+        padding-bottom:15px;
+      }
+
+      .title:after{
+        display:none !important;
+      }
+      .inactive {
+        display:block;
+        opacity: .4;
+      }
+        
+      .title {
+        display:block;
+        width:100%;
+        padding-bottom:10px;
+        text-align:left !important;
+        margin-top:0px;
+        text-align:center !important;
+        color:$secondary-color;
+
+        @media #{$small} {
+          text-align:left !important;
+          padding-top:15px;
+        }
+      }
+      .prev,
+      .next {
+        width:50px;
+        height:50px;
+        border-radius:300px;
+        display:inline-block;
+        overflow:hidden;
+        background-color:$secondary-color;
+        position:relative;
+        text-indent:-999px;
+        border:solid 2px $secondary-color;
+        padding:0px;
+        box-shadow:0px 2px 4px rgba(0, 0, 0, .2);
+
+        &.inactive {
+          box-shadow:none;
+        }
+      }
+      .next{
+        margin-left:5px;
+        background-image:url("../images/arrow-right-white.svg");
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:30px auto;
+
+        @media #{$small} {
+          position:absolute;
+          top:0px;
+          right:0px;
+        }
+      }
+      .prev{
+        margin-right:5px;
+        background-image:url("../images/arrow-left-white.svg");
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:30px auto;
+
+        @media #{$small} {
+          position:absolute;
+          top:0px;
+          right:60px;
+          left:auto;
+        }
+      }
+    }
+    .rc-calendar.rcav-month {
+      float: left;
+      display: block;
+      position: relative;
+      border: none;
+      background: none;
+      text-align:center;
+
+      @media only screen and (min-width: emCalc(801)) {
+        width: 25%;
+
+        &:nth-of-type(4n+1) {
+          clear: both;
+        }
+      }
+
+      @media only screen and (min-width: emCalc(631)) and (max-width: emCalc(800)) {
+        width: 33.333%;
+
+        &:nth-of-type(3n+1) {
+          clear: both;
+        }
+      }
+      @media only screen and (min-width: emCalc(401)) and (max-width: emCalc(630)) {
+        width: 50%;
+
+        &:nth-of-type(2n+1) {
+          clear: both;
+        }
+      }
+      @media only screen and (max-width: emCalc(400)) {
+        width: auto;
+        display:inline-block;
+        float:none;
+      }
+
+      caption {
+        //padding:5px;
+        font-size: 18px;
+      }
+
+      td {
+        font-size: 17px;
+        padding: 6px;
+
+        .rc-item-price .rc-price {
+          font-size: 13px;
+        }
+        .rc-price-type {
+          display: none;
+        }
+
+        @media #{$medium-down} {
+          padding: 4px;
+        }
+        @media only screen and (max-width: emCalc(915)) {
+          font-size: 15px;
+        }
+        @media only screen and (max-width: emCalc(840)) {
+          padding: 3px;
+        }
+
+        @media only screen and (max-width: emCalc(800)) {
+          font-size: 16px;
+          padding: 6px;
+        }
+
+        @media only screen and (max-width: emCalc(760)) {
+          padding: 5px;
+        }
+
+        @media only screen and (max-width: emCalc(715)) {
+          font-size: 14px;
+        }
+        @media only screen and (max-width: emCalc(675)) {
+          padding: 4px;
+        }
+        @media only screen and (max-width: emCalc(630)) {
+          padding: 8px;
+          font-size: 17px;
+        }
+        @media only screen and (max-width: emCalc(585)) {
+          padding: 6px;
+        }
+        @media only screen and (max-width: emCalc(525)) {
+          font-size: 15px;
+        }
+        @media only screen and (max-width: emCalc(500)) {
+          padding: 4px;
+        }
+        @media only screen and (max-width: emCalc(450)) {
+          font-size: 13px;
+        }
+        @media only screen and (max-width: emCalc(400)) {
+          font-size: 19px;
+          padding: 8px;
+        }
+
+        &.av-X {
+          .rc-item-price .rc-price {
+            //color:#ccc;
+          }
+        }
+      }
+    }
+  }
+}

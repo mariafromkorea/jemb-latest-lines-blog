@@ -1,0 +1,119 @@
+.featured-tabs{
+	.section-container.auto{
+		section {
+			.title{
+				padding-right:0px;
+
+				@media #{$small-down} {
+					padding-left:15px;
+					padding-right:15px;
+				}
+
+				a {
+
+					@media #{$small}{
+						border-radius:0px;
+					}
+				}
+			}
+
+			.content{
+				@media #{$small}{
+					padding-top:67px;
+				}
+
+				.view-vr-listing-featured-amenities {
+					.item-list.table{
+						padding-top:0px;
+						padding-bottom:0px;
+
+						@media #{$small-down} {
+							width:100%;
+							display:block;
+						}
+						.inline-list{
+							margin-left:0px;
+							margin-right:0px;
+						}
+					}
+					li{
+						@media #{$small-down}{
+							margin-left:0px;
+							margin-bottom:5px;
+							@include grid-column(12);
+							@include collapse(both);
+						}
+						a {
+							@include vrweb-button();
+							display:inline-block;
+							border-radius: $global-radius !important;
+							overflow:hidden;
+
+							@media #{$small-down}{
+								width:100%;
+								background:$secondary-color;
+								color:$primary-color;
+							}
+						} 
+					}
+				}
+			}
+
+			&:first-child, 
+			&:nth-of-type(1) {
+				.title{
+					left:0px !important;
+
+					a{
+						border-top-left-radius:$global-radius;
+					}
+				}
+			}
+			&:last-child, 
+			&:nth-of-type(2) {
+				.title{
+					left:50% !important;
+
+					a{
+						border-top-right-radius:$global-radius;
+					}
+				}
+			}
+			&:not(.active){
+				.title {
+					a {
+						@media #{$small-down}{
+							background:$tertiary-color;
+							color:$primary-color;
+
+							&:before {
+								content:'Show ';
+								display:inline;
+							}
+
+							&:after{
+								content:'';
+								display:inline-block;
+								width:16px;
+								height:11px;
+								background-image:url('../images/chevron-down-primary.png');
+								margin-left:5px;
+							}
+						}	
+					}
+				}
+			}
+			&.active{
+				.title {
+					a {
+						@media #{$small-down}{
+							&:after {
+								content :' :';
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

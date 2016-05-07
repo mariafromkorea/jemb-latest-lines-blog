@@ -1,0 +1,241 @@
+//=================================================================
+//    TYPOGRAPHY
+//    Styles and Variables
+//    See _vrweb_settings for all typography variables.
+//=================================================================
+
+p, li, td {
+  letter-spacing:.03em;
+  font-size:emCalc(16);
+  
+  @media #{$medium-down} {
+    font-size:$p-font-size-medium;
+  }
+
+  @media #{$small-down} {
+    font-size:$p-font-size-small;
+  }
+
+  .large-text & {
+    font-size:19px;
+    line-height:1.6;
+  }
+}
+
+h1 {
+  color:$h1-font-color;
+  font-weight: $h1-font-weight;
+  font-size: $h1-font-size;
+  font-style: $h1-font-style;
+  line-height: $h1-line-height;
+  margin-top: $h1-top-margin;
+  margin-bottom: $h1-bottom-margin;
+  text-rendering:$h1-text-rendering;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+
+  @media #{$medium-down}{
+    font-size: $h1-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h1-font-size-small;
+  }
+
+  a {
+    color: $h1-font-a-color;
+  }
+
+  .large-text & {
+    font-size:$h1-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h1-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h1-font-size-medium;
+    }
+  }
+}
+
+h2 {
+  color:$h2-font-color;
+  font-weight: $h2-font-weight;
+  font-size: $h2-font-size;
+  font-style: $h2-font-style;
+  line-height: $h2-line-height;
+  margin-top: $h2-top-margin;
+  margin-bottom: $h2-bottom-margin;
+  text-rendering:$h2-text-rendering;
+
+  @media #{$medium-down}{
+    font-size: $h2-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h2-font-size-small;
+  }
+
+  a {
+    color: $h2-font-a-color;
+  }
+
+  .large-text & {
+    font-size:$h2-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h2-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h2-font-size-medium;
+    }
+  }
+}
+
+h3 {
+  color:$h3-font-color;
+  font-weight: $h3-font-weight;
+  font-size: $h3-font-size;
+  font-style: $h3-font-style;
+  line-height: $h3-line-height;
+  margin-top: $h3-top-margin;
+  margin-bottom: $h3-bottom-margin;
+  text-rendering:$h3-text-rendering;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+
+  @media #{$medium-down}{
+    font-size: $h3-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h3-font-size-small;
+  }
+
+  a {
+    color: $h3-font-a-color;
+  }
+  .large-text & {
+    font-size:$h3-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h3-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h3-font-size-medium;
+    }
+  }
+}
+
+h4 {
+  font-family:$body-gf;
+  color:$h4-font-color;
+  font-weight: $h4-font-weight;
+  font-style: $h4-font-style;
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  margin-top: $h4-top-margin;
+  margin-bottom: $h4-bottom-margin;
+  text-rendering:$h4-text-rendering;
+
+  @media #{$medium-down}{
+    font-size: $h4-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h4-font-size-small;
+  }
+
+
+  a {
+    color: $h4-font-a-color;
+  }
+  .large-text & {
+    font-size:$h4-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h4-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h4-font-size-medium;
+    }
+  }
+}
+
+h5 {
+  font-family:$body-gf;
+  color:$h5-font-color;
+  font-weight: $h5-font-weight;
+  font-style: $h5-font-style;
+  font-size: $h5-font-size;
+  line-height: $h5-line-height;
+  margin-top: $h5-top-margin;
+  margin-bottom: $h5-bottom-margin;
+  text-rendering:$h5-text-rendering;
+  letter-spacing:.03em;
+
+  @media #{$medium-down}{
+    font-size: $h5-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h5-font-size-small;
+  }
+
+
+  a {
+    color: $h5-font-a-color;
+  }
+  .large-text & {
+    font-size:$h5-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h5-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h5-font-size-medium;
+    }
+  }
+}
+
+h6 {
+  font-family:$body-gf;
+  color:$h6-font-color;
+  font-weight: $h6-font-weight;
+  font-style: $h6-font-style;
+  line-height: $h6-line-height;
+  font-size: $h6-font-size;
+  margin-top: $h6-top-margin;
+  margin-bottom: $h6-bottom-margin;
+  text-rendering:$h6-text-rendering;
+  letter-spacing:.03em;
+
+  @media #{$medium-down}{
+    font-size: $h6-font-size-medium;
+  }
+
+  @media #{$small-down}{
+    font-size: $h6-font-size-small;
+  }
+
+  a {
+    color: $h6-font-a-color;
+  }
+
+  .large-text & {
+    font-size:$h6-font-size-large-txt;
+
+    @media #{$medium-down}{
+      font-size: $h6-font-size;
+    }
+
+    @media #{$small-down}{
+      font-size: $h6-font-size-medium;
+    }
+  }
+}

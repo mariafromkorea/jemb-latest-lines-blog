@@ -1,0 +1,114 @@
+//============================
+// Recently Viewed Properties
+//============================
+
+// The container background for this is actually defined elsewhere so that
+// these styles are as position-agnostic as possible.
+// The one current implementation of this block is on VR Listing nodes full
+// page view, so go look in the "layouts/vacation-rentals" for the background.
+
+.block-vrweb-recently-viewed {
+  @include grid-row;
+
+  h4.block-title {
+    color:$recently-viewed-block-title-color;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-family:$head-gf;
+    margin-top:15px;
+    margin-bottom:15px;
+
+    .tpl-fw &{
+      text-align:center;
+      margin-left:0;  
+    }
+    .tpl-default &{
+      @media #{$medium-down} {
+        margin-left: 1.5em;
+        //margin-bottom: 0.5em;
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  .more-link a {
+    //color: $recently-viewed-more-link-color;
+
+    // The more link appears to have to much space above it but that's actually
+    // by design as the content above is displayed as an inline block list and
+    // each item has padding-bottom so that the ones on new rows look nice too.
+    // So, let's just push our "view more" link up a bit and it'll be fine.
+    position: relative;
+    top: -0.75em;
+
+    @media #{$medium-down} {
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+    }
+  }
+
+  .view-content {
+    //font-size: $recently-viewed-property-contents-size;
+    //text-align: $recently-viewed-property-contents-align;
+
+    .group-content{
+      box-shadow: rgba(133, 133, 133, 0.5) 0 0 5px;
+      padding-left:0;
+      padding-right:0;
+      padding-bottom:5px;
+      background:#fff;
+
+      @media only screen and (min-width:651px) and (max-width:767px){
+        padding-bottom:0;
+        background:$transparent;
+        box-shadow:none;
+        max-width:600px;
+        margin:auto;
+        float:none;
+      }
+
+      .rc-core-images{
+        @media only screen and (min-width:651px) and (max-width:767px){
+          @include grid-column(6);
+          @include collapse(both);
+        }
+        img{
+          border:solid 4px #fff;
+          @media only screen and (min-width:651px) and (max-width:767px){
+            @include image-borders;
+          }
+        }
+      }
+      .rc-core-images:hover, .rc-core-images:active{
+        & + .field-name-title a{
+          color:$tertiary-color;
+        }
+      }
+
+      >div:not(.rc-core-images){
+        background:#fff;
+        padding-left:10px;
+
+        @media only screen and (min-width:651px) and (max-width:767px){
+          background:$transparent;
+          @include grid-column(6);
+        }
+
+        h6{
+          margin-bottom:0;
+
+          a{
+            &:hover, &:active{
+              color:$tertiary-color;
+            }
+          }
+        }
+      }
+    }
+    @media #{$medium-down} {
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+    }
+  }
+}

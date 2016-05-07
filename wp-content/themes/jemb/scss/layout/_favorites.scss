@@ -1,0 +1,401 @@
+.vrweb-collection-link {
+  display:block;
+  width:50px;
+  height:50px;
+  text-indent:-999px;
+  overflow:hidden;
+  border-radius:300px;
+  position:absolute;
+  background:$white;
+  @include box-shadow($darker:true);
+
+  .fi-heart,
+  .fi-x {
+    display:block;
+    width:50px;
+    height:50px;
+
+  }
+  .fi-heart {
+    background:url("../images/icon-heart-empty.svg") 10px 12px no-repeat;
+    background-size:30px;
+  }
+  .fi-x {
+    background:url("../images/icon-heart-full.svg") 10px 12px no-repeat;
+    background-size:30px;
+  }
+
+  @media only screen and (min-width:emCalc(850)) {
+    &, 
+    .fi-heart, 
+    .fi-x {
+      width:60px;
+      height:60px;
+    }
+    .fi-heart,
+    .fi-x {
+      background-size:40px;
+      background-position:10px 14px;
+    }
+  }
+}
+
+//============================
+// Favorites
+//============================
+.favorites-cart {
+  #page-title {
+    display:block;
+    width:100%;
+    position:relative;
+
+    .addthis_toolbox {
+      float:right;
+
+      a {
+        @include vrweb-button($color:$primary-color, $border-style:true);
+        padding-top:4px;
+      }
+    }
+    @media only screen and (max-width:emCalc(500)) {
+      text-align:center;
+
+      .addthis_toolbox {
+        margin:auto;
+        float:none;
+        display:block;
+        width:100%;
+        text-align:center;
+        padding-top:10px;
+        a {
+          display:inline-block;
+          float:none;
+        }
+      }
+    }
+  }
+  .l-main {
+    max-width:none;
+    position:relative;
+  }
+
+  .main.columns {
+    @include grid-row;
+    max-width:1200px;
+    float:none;
+    position:static;
+  }
+}
+.view-display-id-page_favorites {
+  @include clearfix;
+
+  .view-empty {
+    min-height:50px;
+  }
+
+  > .view-content {
+
+    > ul {
+      margin-left:0px;
+      margin-right:0px;
+    }
+  }
+  > .view-filters {
+    @include clearfix;
+    padding-bottom:20px;
+    padding-top:15px;
+    clear:both;
+  }
+    > .attachment {
+      @media #{$small} {
+        position:absolute !important;
+        bottom:25px;
+        right:15px;
+        top:245px;
+        width:auto;
+        left:50%; 
+
+        .gmap-gmap {
+          //height:100% !important;
+          position: absolute !important;
+          bottom: 0px !important;
+          top: 0px !important;
+          height: auto !important;
+          right:0px !important;
+        }
+      }
+      @media #{$small-down} {
+        clear:both;
+        padding-right:40px;
+        background:$muted-color url("../images/scroll-bar-bg-lg.gif") right center no-repeat;
+        background-size:40px 100%;
+        margin-bottom:20px;
+      }
+    }
+    > .view-content{
+      @include grid-column(6);
+      @include collapse(left);
+      padding-right:20px;
+
+      @media only screen and (min-width:emCalc(768)) and (max-width:emCalc(850)) {
+        //padding-right:0px;
+      }
+
+      li {
+        @include grid-column(12);
+        @include min(both);
+
+        @media only screen and (min-width:emCalc(600)) {
+          @include grid-column(6);
+          @include grid-clear(2, 10px);
+        }
+        @media #{$small-medium} {
+          @include grid-column(12);
+          @include collapse(both);
+        }
+      }
+      
+      @media #{$small-down} {
+        @include grid-column(12);
+        @include collapse(both);
+      }
+    }
+}
+
+
+// Layout for favorites search form.
+.view-favorites {
+  .view-filters {
+    @include content-box(15px);
+    background:$sidebar-bg-desktop;
+    padding-bottom:10px;
+    margin-bottom:25px;
+
+    @media #{$medium} {
+      box-sizing:border-box;
+      margin-left:auto;
+      margin-right:auto;
+      border-radius:$global-radius;
+      @include box-shadow();
+    }
+
+    .block-vrweb-favorites {
+      padding-top:15px;
+      text-align:center;
+
+      a {
+        font-size:20px;
+        text-indent:-999px;
+        display:inline-block;
+        overflow:hidden;
+        width:145px;
+        height:30px;
+        position:relative;
+
+        &:hover, &:active {
+          color:$success-color;
+        }
+      }
+      .fi-heart {
+        display:none;
+      }
+      .service-label {
+        padding-left:35px;
+        background:url("../images/icon-update.svg") left top no-repeat;
+        background-size:30px auto;
+        text-indent:0px;
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+      }
+      @media #{$small} {
+        @include grid-column(2.4);
+        clear:both;
+        float:right;
+        padding:0px;
+        text-align:center;
+        margin-top:-15px;
+
+        a {
+          width:117px;
+          height:22px;
+        }
+        .service-label {
+          font-size:16px;
+          background-size:24px auto;
+          padding-left:30px;
+        }
+
+        @if $hide-adults-children-on-quick-search == true {
+          @include grid-column(4);
+          clear:both;
+          float:right;
+          padding:0px;
+          text-align:center;
+          margin-top:0px;
+
+          a {
+            width:135px;
+          }
+
+          .service-label {
+            font-size:18px;
+            padding-left:35px;
+            background-size:28px auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+#views-exposed-form-favorites-page-favorites {
+  margin-bottom:0px;
+  @include clearfix();
+
+  #edit-avail-filter-wrapper {
+    .form-item {
+      @include grid-column(6);
+      padding-bottom:12px;
+
+      &.form-item-avail-filter-rcav-begin,
+      &.form-item-avail-filter-rcav-adult {
+        @include min(left);
+        padding-right:8px;
+      }
+      &.form-item-avail-filter-rcav-end,
+      &.form-item-avail-filter-rcav-child {
+        @include min(right);
+        padding-left:8px;
+      }
+
+      @if $hide-adults-children-on-quick-search == true {
+        &.form-item-avail-filter-rcav-adult,
+        &.form-item-avail-filter-rcav-child {
+          display:none !important;
+        }
+      }
+    }
+
+    @media #{$small} {
+      @include grid-column(9.6);
+      @include collapse(both);
+
+      .form-item {
+        @include grid-column(3);
+        padding-right:12px !important;
+        @include collapse(left);
+      }
+
+      @if $hide-adults-children-on-quick-search == true {
+        @include grid-column(8);
+
+        .form-item {
+          @include grid-column(6);
+        }
+      }
+    }
+  }
+  .views-submit-button {
+    button {
+      margin-bottom:0px;
+      @include vrweb-button($tertiary-color, $display:block);
+    }
+    @media #{$small} {
+      @include grid-column(2.4);
+      @include min(both);
+      padding-top:22px;
+      
+      button {
+        @include min(both);
+        font-size:11px;
+      }
+
+      @if $hide-adults-children-on-quick-search == true {
+        @include grid-column(4);
+
+        button {
+          @include vrweb-button($tertiary-color);
+        }
+      }
+    }
+  }
+}
+
+
+// Teaser view.
+.favorites-cart {
+  .node-vr-listing.view-mode-featured_rental {
+    @include grid-column(12);
+    @include min(both);
+
+    .group-content {
+      border:solid 1px $muted-color;
+    }
+    .group-favorites-image-wrapper {
+      @media only screen and (min-width:emCalc(420)) {
+        padding-top:5px;
+        padding-left:5px;
+        padding-bottom:5px;
+      }
+    }
+
+    .rc-item-pricing {
+      .rc-na,
+      .rc-item-price {
+        color:$pricing-color;
+      }
+
+      .rc-item-price-buy {
+        display:block;
+        margin-bottom:0px;
+
+        button {
+          @include vrweb-button($color:$secondary-color);
+          margin-left:0px;
+          margin-bottom:0px;
+        }
+      }
+    }
+    @media only screen and (min-width:emCalc(600)) and (max-width:emCalc(767)),
+    #{$medium} {
+      .group-favorites-image-wrapper {
+        padding:0px;
+      }
+    }
+    @media #{$small-medium} {
+      .group-favorites-image-wrapper {
+        @include grid-column(6);
+        padding-top:5px;
+        padding-left:5px;
+        padding-bottom:5px;
+
+        .vrweb-collection-link {
+          right:auto;
+          left:-10px;
+        }
+      }
+
+      .group-content {
+        padding-bottom:0px;
+      }
+      .rc-item-pricing,
+      .field-name-title {
+        @include grid-column(6);
+        float:right;
+      }
+      .rc-item-pricing {
+        clear:right;
+      }
+      .rc-lodging-detail {
+        @include grid-column(6);
+        float:right;
+        line-height:$document-line-height;
+      }
+      .rc-lodging-detail + .rc-lodging-detail {
+        border:none;
+      }
+    }
+  }
+}

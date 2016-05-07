@@ -1,0 +1,106 @@
+//layout for VR List by Amenity
+#views-exposed-form-vacation-rental-listings-listings-by-amenity{
+
+  #edit-avail-filter-wrapper{
+    &>label{display:none;}
+    .views-widget{
+      .form-item{
+        @include grid-column(3);
+        @include collapse(left);
+        @media #{$tiny}{
+          @include grid-column(6);
+          &.form-item-avail-filter-rcav-end{
+            @include collapse(right);
+            padding-left:15px !important;
+          }
+        }
+      }
+    }
+  }//edit-avail-filter-wrapper
+
+  #edit-beds-numeric-wrapper, 
+  #edit-baths-numeric-wrapper{
+    @include grid-column(2);
+    @include collapse(left);
+    @media #{$small-down}{
+      @include grid-column(3);
+      @include collapse(right);
+      padding-left:15px !important;
+    }
+    @media #{$tiny}{
+      @include grid-column(6);
+    }
+  }
+  #edit-beds-numeric-wrapper{
+    @include collapse(left);
+    padding-right:15px !important;
+  }
+  .views-widget-sort-by, .views-widget-sort-order, 
+  .form-item-avail-filter-rcav-adult, 
+  .form-item-avail-filter-rcav-child{
+    display:none;
+  }
+  .views-submit-button{
+    @include collapse(both);
+    @include grid-column(2);
+    margin-top:12px;
+    button{height:34px;}
+    &:after{
+      content:'';
+      clear:both;
+    }
+    @media #{$small-down}{
+      @include grid-column(12); 
+    }
+  }
+}//form
+
+//tabs
+/*.view-display-id-listings_by_amenity.section-container{
+  clear:both;
+  .section{
+    &.listing-teasers-map{
+      & > .title{
+        margin-left:-1px;
+      }
+    }
+    &.listing-teasers, &.listing-teasers-map{
+      & > .title {
+        background: $search-results-tab-title-bg;
+        border: $search-results-tab-title-border;
+
+        @media #{$small-down} {
+          margin-bottom: 0.5em;
+        }
+
+          &:hover {
+            background: $search-results-tab-title-bg-hover;
+          }
+
+          a {
+            color: $search-results-tab-title-color;
+            font-size: $search-results-tab-title-size;
+            font-weight: $search-results-tab-title-weight;
+            text-transform: $search-results-tab-title-text-transform;
+          }
+        }
+      &.active{
+       &>.title {
+        background: $search-results-tab-title-bg-active;
+        border-bottom: 0;
+
+          &:hover {
+            background: $search-results-tab-title-bg-hover-active;
+          }
+
+          a {
+            color: $search-results-tab-title-color-active;
+            font-weight: $search-results-tab-title-weight-active;
+          }
+        }//title
+        }//active
+      }
+    
+  }//listing-teasers
+}*/
+

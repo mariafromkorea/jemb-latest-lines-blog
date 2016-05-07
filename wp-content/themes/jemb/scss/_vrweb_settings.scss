@@ -1,0 +1,924 @@
+
+// 		THIS PARTIAL INCLUDES THE FOLLOWING SECTIONS
+//	  USE 'FIND' TO JUMP AROUND AND EDIT:
+//=======================================================================
+//
+//		#1 GRID : DEFINE
+//		#2 COLORS, GLOBAL RADIUS & BOX SHADOW
+//		#3 TYPOGRAPHY
+//		#4 TABLES
+//		#5 TOPBAR
+//		#6 FORM COMPONENTS
+//		#7 SIDEBAR VARIABLES
+//		#8 SEARCH VARIABLES
+//		#9 SECTION TABS
+//		#10 FEATURED TABS
+//		#11 YOU CAN PROBABLY LEAVE THESE ALONE (change only if needed)
+//		#12 FULL VARIABLE DIRECTORY (uncomment to override local default variables)
+//
+//=======================================================================
+
+//				#1 GRID
+//----------------------------------------------------//
+$row-width: 1170px !default;
+$column-gutter: 30px;
+$total-columns: 12;
+
+//				MEDIA QUERIES & BREAKPOINTS
+//----------------------------------------------------//
+$large-screen: emCalc(1190);
+$large-screen-down:emCalc(1189);
+$medium-screen: emCalc(1025);
+$medium-screen-down: emCalc(1024);
+$small-screen: emCalc(768);
+$small-screen-down: emCalc(767);
+$tiny-screen:emCalc(481);
+$tiny-screen-down: emCalc(480);
+
+// Auxiliary breakpoint variables.
+$screen: "only screen";
+$tiny:"only screen and (min-width:#{$tiny-screen})";
+$tiny-down: "only screen and (max-width:#{$tiny-screen-down})";
+$small: "only screen and (min-width: #{$small-screen})";
+$small-down: "only screen and (max-width:#{$small-screen-down})";
+$medium: "only screen and (min-width: #{$medium-screen})";
+$medium-down: "only screen and (max-width:#{$medium-screen-down})";
+$large: "only screen and (min-width: #{$large-screen})";
+$large-down: "only screen and (max-width:#{$large-screen-down})";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+
+$tiny-small: "only screen and (min-width:#{$tiny-screen}) and (max-width:#{$small-screen-down})";
+$tiny-medium: "only screen and (min-width:#{$tiny-screen}) and (max-width:#{$medium-screen-down})";
+$tiny-large: "only screen and (min-width:#{$tiny-screen}) and (max-width:#{$large-screen-down})";
+$small-medium: "only screen and (min-width:#{$small-screen}) and (max-width:#{$medium-screen-down})";
+$small-large: "only screen and (min-width:#{$small-screen}) and (max-width:#{$large-screen-down})";
+$medium-large: "only screen and (min-width:#{$medium-screen}) and (max-width:#{$large-screen-down)}";
+
+//				TOPBAR BREAKPOINT
+//----------------------------------------------------//
+// Let's switch to mobile menu for medium screens and smaller.
+//$topbar-breakpoint: emCalc(940); // Default.
+$topbar-breakpoint: $medium-screen;
+
+//=======================================================================
+//
+//		#2 COLORS, GLOBAL RADIUS & BOX SHADOW : DEFINE
+//
+//=======================================================================
+// Main color variables.
+$primary-color: #666; //charcoal grey
+$secondary-color:#0082bf; // darker blue
+$tertiary-color:#26a2e2;	// blue
+$success-color:#fe5a4e; // coral orange
+$muted-color:#f0f0f0;//lt grey
+$muted-color-alt:#b4b4b4; //darker grey
+$black: #000;
+$white: #fff;
+$transparent: rgba(255, 255, 255, 0);
+
+// Global radius.
+$global-radius: 3px;
+$global-rounded: 1000px;
+$global-box-shadow:0px 2px 3px rgba(0, 0, 0, .2);
+
+//=======================================================================
+//
+//		#3 TYPOGRAPHY : CUSTOMIZE
+//
+//=======================================================================
+// We need our font stacks!
+@import 'fonts/default';
+
+//Assign font stacks to variables.
+$base-font-family: $body-gf;
+$font-body: $body-gf;
+$font-monospace: $consolas;
+$form-font-family: $arial;
+$main-anchor-font-color: $primary-color;
+
+//Set line height for entire document, default is 1.4
+$document-line-height: 1.45;
+
+//Assign our font variables to Foundation
+$body-font-family: $font-body;
+$header-font-family: $head-gf;
+$code-font-family: $font-monospace;
+
+// Font-smoothing
+$font-smoothing: antialiased;
+
+// Style anchors
+$anchor-text-decoration: none;
+$anchor-font-color: $main-anchor-font-color;
+$anchor-font-color-hover: darken($anchor-font-color, 5%);
+
+// Style the <hr> element
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-border-color: darken($primary-color, 5%);
+$hr-margin: emCalc(20);
+
+// Typography for forms
+$input-font-family: inherit;
+$input-font-color: rgba(0,0,0,0.75);
+$input-font-size: emCalc(12);
+
+//				SET UP HEADER STYLES
+//----------------------------------------------------//
+//We use these to control header font styles
+$header-font-color: $primary-color;
+$header-font-weight: 700;
+$header-font-style: normal;
+$header-line-height: 1.4;
+$header-top-margin: .2em;
+$header-bottom-margin: .5em;
+$header-text-rendering: optimizeLegibility;
+
+//We use these to control header font sizes
+$h1-font-size: emCalc(36); 
+$h2-font-size: emCalc(34); 
+$h3-font-size: emCalc(25); 
+$h4-font-size: emCalc(25); 
+$h5-font-size: emCalc(20); 
+$h6-font-size: emCalc(20); 
+
+$h1-font-size-large-txt: emCalc(38); 
+$h2-font-size-large-txt: emCalc(36); 
+$h3-font-size-large-txt: emCalc(27); 
+$h4-font-size-large-txt: emCalc(27); 
+$h5-font-size-large-txt: emCalc(21); 
+$h6-font-size-large-txt: emCalc(21); 
+
+//We use these to control header font sizes for medium
+$h1-font-size-medium: emCalc(34);
+$h2-font-size-medium: emCalc(32);
+$h3-font-size-medium: emCalc(23);
+$h4-font-size-medium: emCalc(23);
+$h5-font-size-medium: emCalc(18);
+$h6-font-size-medium: emCalc(18);
+
+
+//We use these to control header font sizes for small and down
+$h1-font-size-small: emCalc(27);
+$h2-font-size-small: emCalc(23);
+$h3-font-size-small: emCalc(20);
+$h4-font-size-small: emCalc(20);
+$h5-font-size-small: emCalc(18);
+$h6-font-size-small: emCalc(18);
+
+//We use these to control header font colors
+$h1-font-color: $header-font-color;
+$h2-font-color: $header-font-color;
+$h3-font-color: $tertiary-color;
+$h4-font-color: $tertiary-color;
+$h5-font-color: $tertiary-color;
+$h6-font-color: $header-font-color;
+
+//We use these to control header font link colors
+$h1-font-a-color: $h1-font-color;
+$h2-font-a-color: $h2-font-color;
+$h3-font-a-color: $h3-font-color;
+$h4-font-a-color: $h4-font-color;
+$h5-font-a-color: $h5-font-color;
+$h6-font-a-color: $h6-font-color;
+
+//We use these to control header font weights
+$h1-font-weight: $header-font-weight;
+$h2-font-weight: 300;
+$h3-font-weight: $header-font-weight;
+$h4-font-weight: 300;
+$h5-font-weight: $header-font-weight;
+$h6-font-weight: $header-font-weight;
+
+// We use these to control header font style 
+$h1-font-style: $header-font-style;
+$h2-font-style: $header-font-style;
+$h3-font-style: $header-font-style;
+$h4-font-style: $header-font-style;
+$h5-font-style: $header-font-style;
+$h6-font-style: $header-font-style;
+
+// We use these to control header font line height 
+$h1-line-height: $header-line-height;
+$h2-line-height: $header-line-height;
+$h3-line-height: $header-line-height;
+$h4-line-height: $header-line-height;
+$h5-line-height: $header-line-height;
+$h6-line-height: $header-line-height;
+
+// We use these to control header font top margin 
+$h1-top-margin: $header-top-margin;
+$h2-top-margin: $header-top-margin;
+$h3-top-margin: $header-top-margin;
+$h4-top-margin: $header-top-margin;
+$h5-top-margin: $header-top-margin;
+$h6-top-margin: $header-top-margin;
+
+// We use these to control header font bottom margin 
+$h1-bottom-margin: 6px;
+$h2-bottom-margin: $header-bottom-margin;
+$h3-bottom-margin: $header-bottom-margin;
+$h4-bottom-margin: $header-bottom-margin;
+$h5-bottom-margin: $header-bottom-margin;
+$h6-bottom-margin: $header-bottom-margin;
+
+// We use these to control header font text-rendering 
+$h1-text-rendering: $header-text-rendering;
+$h2-text-rendering: $header-text-rendering;
+$h3-text-rendering: $header-text-rendering;
+$h4-text-rendering: $header-text-rendering;
+$h5-text-rendering: $header-text-rendering;
+$h6-text-rendering: $header-text-rendering;
+
+//				SET UP SUBHEADER STYLES
+//----------------------------------------------------//
+$subheader-line-height: 1.4;
+$subheader-font-color: lighten($header-font-color, 40%);
+$subheader-font-weight: 300;
+$subheader-top-margin: .2em;
+$subheader-bottom-margin: .5em;
+
+//				SET UP PARAGRAPHY STYLES
+//----------------------------------------------------//
+// We use these to style paragraphs 
+$paragraph-font-family: $font-body;
+$paragraph-font-weight: 400;
+$paragraph-font-size: 1em;
+$paragraph-line-height: $document-line-height;
+$paragraph-margin-bottom: emCalc(20);
+$paragraph-aside-font-size: emCalc(14);
+$paragraph-aside-line-height: 1.35;
+$paragraph-aside-font-style: italic;
+$paragraph-text-rendering: optimizeLegibility;
+
+// Assign <p> font sizes for mobile
+$p-font-size-medium: $paragraph-font-size;
+$p-font-size-small: 1em;
+
+//				SET UP LIST STYLES
+//----------------------------------------------------//
+// We use these to style lists 
+$list-style-type: square;
+$list-style-position: outside;
+$list-side-margin: 2.5em;
+$list-nested-margin: emCalc(20);
+$definition-list-header-weight: bold;
+$definition-list-header-margin-bottom: .3em;
+$definition-list-margin-bottom: emCalc(12);
+
+// We use these to style the <hr> element 
+$hr-border-color: #ddd;
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-margin: emCalc(20);
+
+//=======================================================================
+//
+//		#4 TABLES
+//
+//=======================================================================
+
+// These control the background color for the table and even rows
+$table-bg: #fff;
+$table-even-row-bg: inherit; // lighten($muted-color, 25%)
+
+// These control the table cell border style
+$table-border-style: solid;
+$table-border-size: 1px;
+$table-border-color: #ddd;
+
+// These control the table head styles
+$table-head-bg: lighten($muted-color, 20%);
+$table-head-font-size: $paragraph-font-size;
+$table-head-font-color: #222;
+$table-head-font-weight: bold;
+$table-head-padding: emCalc(8, 10, 10);
+
+// These control the row padding and font styles
+$table-row-padding: emCalc(9, 10);
+$table-row-font-size: $paragraph-font-size;
+$table-row-font-color: #222;
+$table-line-height: 1;
+
+// These are for controlling the display and margin of tables
+$table-display: table-cell;
+$table-margin-bottom: emCalc(20);
+
+//=======================================================================
+//
+//		#5 TOPBAR : CUSTOMIZE NAVIGATION
+//
+//=======================================================================
+
+// FULL WIDTH TOPBAR? Set to true or false. 
+// Full width will render the navigation as a full-width bar with centered 
+// links below the logo and service bar, and above the slideshow. 
+$topbar-display-fullwidth:false;
+
+// Move nav around for vertical alignment with variable height logos
+$header-fudge-factor:0px; 
+
+//				SET HEIGHT
+//----------------------------------------------------//
+$topbar-height-desktop: 50px;
+$topbar-touch-height:65px;
+
+
+//				DESKTOP NAV VARIABLES
+//----------------------------------------------------//
+// TOP LEVEL LINKS
+$topbar-link-color: $primary-color;
+$topbar-link-color-hover: $tertiary-color;
+
+//Set top bar background for desktop an touch devices
+//should usually be $transparent on desktop
+$topbar-bg: $transparent;
+
+// Media Query for Desktop
+$topbar-media-query: $medium;
+
+//Probably don't wanna touch these
+$topbar-link-bg: $transparent;
+$topbar-link-bg-hover: $transparent;
+
+//				DESKTOP DROPDOWNS
+//----------------------------------------------------//
+$dropdown-link-color: $primary-color;
+$dropdown-link-color-hover: $white;
+$dropdown-link-bg-hover:$tertiary-color;
+$dropdown-border-color:$muted-color-alt; // must set this to a color--controls dropdown arrow on hover and dropdown border color
+$dropdown-bg:$white;
+
+//these will further customize the dropdown border styles
+$dropdown-border-style:solid; //set to 'none' for no border, style will still hold
+$dropdown-border-width:1px; //doesnt matter if $dropdown-border-style is set to 'none'
+
+//Probably don't wanna touch these
+$dropdown-touch-bg:$transparent;
+$dropdown-link-bg: $transparent;
+
+//				MOBILE NAV VARIABLES
+//----------------------------------------------------//
+//TOP LEVEL TOUCH NAV
+$topbar-touch-link-color: $muted-color;
+$topbar-touch-link-color-hover: $muted-color;
+$topbar-touch-link-bg: $secondary-color;
+$topbar-touch-link-bg-hover:darken($topbar-touch-link-bg, 5%);
+$header-icon-color:$tertiary-color;
+$menu-icon-color:$white;
+$menu-icon-bg:$tertiary-color;
+$topbar-touch-bg:$muted-color;
+
+//				MOBILE SECOND-TIER NAV (DROPDOWNS ON DESKTOP)
+//----------------------------------------------------//
+// Set the link colors and background for dropdown nav on touch devices
+// Setting to the same variable used for main nav on touch
+$dropdown-touch-link-color: $topbar-touch-link-color;
+$dropdown-touch-link-bg: $topbar-touch-link-bg;
+//hover state...
+$dropdown-touch-link-color-hover: $topbar-touch-link-color-hover;
+$dropdown-touch-link-bg-hover:$topbar-touch-link-bg-hover;
+
+
+//=======================================================================
+//
+//		#6 FORM COMPONENTS : CUSTOMIZE
+//
+//=======================================================================
+
+//				STYLE LABELS
+//----------------------------------------------------//
+$label-size: emCalc(14);
+$label-size-large: emCalc(16);
+$label-weight: 400;
+$label-style: normal;
+$label-color:$black;
+$label-minheight:14px;
+$label-margin-bottom:2px;
+
+//				STYLE FORM DESCRIPTIONS
+//----------------------------------------------------//
+$form-description-size: emCalc(10);
+$form-description-style: italic;
+
+//				GLOBAL BORDER, HEIGHT & BG FOR INPUT/SELECTS
+//----------------------------------------------------//
+// Global height and border style for form components (inputs, selects, buttons)
+// Gets applied to input fields and selects in components/_forms and vrweb-button mixin in base/_mixins
+$form-component-bg:lighten($muted-color, 5%);
+$form-component-height:38px;
+$form-component-border:solid 1px rgba(0, 0, 0, .15);
+
+
+//				GLOBAL BUTTON STYLES
+//----------------------------------------------------//
+//	Default color
+$default-button-color: $primary-color;
+$default-button-hover-color:$tertiary-color;
+
+//=======================================================================
+//
+//		#7 SIDEBAR VARIABLES : CUSTOMIZE
+//
+//=======================================================================
+//Background color theme
+$sidebar-bg: lighten($muted-color-alt, 10%);
+$sidebar-bg-desktop:$muted-color;
+
+// text colors
+$sidebar-text-color:$black;
+$sidebar-text-color-desktop:$black;
+$sidebar-link-color-hover:$secondary-color;
+
+// block title color theme
+$sidebar-block-title-bg:$secondary-color;
+$sidebar-block-title-bg-desktop:$muted-color-alt;
+
+//=======================================================================
+//
+//		#8 SEARCH VARIABLES : CUSTOMIZE
+//
+//=======================================================================
+// Text color for rendered Prices
+$pricing-color:$secondary-color;
+
+// RESCMS settings
+// Do you want to hide the adults & children from the quick search widget? True or False
+$hide-adults-children-on-quick-search: false;
+
+// Inline Calendar icon image on arrival/departure fields
+$vrcalendar-image: "../images/calendar-grey.png";
+
+
+//				SIDEBAR SEARCH VARIABLES
+//				By default these are matched to the sidebar styles
+//----------------------------------------------------//
+//Variables to customize the search widget:
+$search-bg:$sidebar-bg;
+$search-bg-desktop:$muted-color;
+
+$search-block-title-bg:$sidebar-block-title-bg;
+$search-block-title-bg-desktop:$sidebar-block-title-bg-desktop;
+
+$search-label-color:$label-color;
+$search-label-color-desktop:$label-color;
+
+
+//=======================================================================
+//
+//		#9 SECTION TABS : CUSTOMIZE
+//		These control the default styles of sectiontabs on detail pages
+//
+//=======================================================================
+@import "base/fdn-variable-overrides";
+//section container and >section background 
+$sectiontab-desktop-container-bg:transparent;
+$sectiontab-desktop-bg:transparent;
+
+//				MOBILE DEFAULT TAB VARIABLES
+//----------------------------------------------------//
+$sectiontab-title-bg:$secondary-color;
+$sectiontab-title-bg-over:$tertiary-color;
+$sectiontab-title-color:$white;
+
+//				MOBILE ACTIVE TAB VARIABLES
+//----------------------------------------------------//
+$sectiontab-active-title-bg:$transparent;
+$sectiontab-active-title-bg-over:$transparent;
+$sectiontab-active-title-color:$secondary-color;
+
+//				DESKTOP DEFAULT TAB VARIABLES
+//----------------------------------------------------//
+$sectiontab-desktop-title-bg:$muted-color;
+$sectiontab-desktop-title-bg-over:$muted-color-alt;
+$sectiontab-desktop-title-color:darken($sectiontab-desktop-title-bg, 45%);
+
+//				DESKTOP ACTIVE TAB VARIABLES
+//----------------------------------------------------//
+$sectiontab-desktop-active-title-bg:$tertiary-color;
+$sectiontab-desktop-active-title-bg-over:$sectiontab-desktop-active-title-bg;
+$sectiontab-desktop-active-title-color:#fff;
+
+//=======================================================================
+//
+//		#10 FEATURED TABS : CUSTOMIZE
+//		These control the styles of the homepage featured tabs that 
+//		contain the quick search
+//
+//=======================================================================
+//Set the number of tabs on your homepage search <0|2|3>
+$featured-tabs-number: 0;
+
+$featured-tabs-align-bottom: false;
+$featured-tabs-button-style: false;
+
+//				MOBILE COLOR THEME FOR FEEATURED TABS
+//----------------------------------------------------//
+
+// Mobile Background color
+$featured-tabs-bg-mobile:$muted-color;
+
+//Label color for mobile
+$featured-tabs-touch-label-color:$label-color;
+
+//Link backgrounds for default and hover states
+$featured-tab-touch-bg:$primary-color;
+$featured-tab-touch-bg-over:$secondary-color;
+
+//Link colors for default and hover states
+$featured-tab-touch-color:$white;
+$featured-tab-touch-color-over:$featured-tab-touch-color;
+
+//Set active color, background is transparent
+$featured-tab-touch-active-color:$primary-color;
+
+//				DESKTOP COLOR THEME FOR FEEATURED TABS
+//----------------------------------------------------//
+
+//Desktop background color
+$featured-tabs-bg:rgba(0, 0, 0, .6);
+
+//Label color for desktop
+$featured-tabs-label-color:$muted-color;
+
+//Link backgrounds for default and hover states
+$featured-tab-bg:$tertiary-color;
+$featured-tab-bg-over:$secondary-color;
+
+//Link colors for default and hover states
+$featured-tab-color:$white;
+$featured-tab-color-over:$white;
+
+//Set active background and color
+$featured-tab-active-bg:$transparent;
+$featured-tab-active-color:$muted-color;
+
+//=======================================================================//
+//
+//				#11 YOU CAN PROBABLY LEAVE THESE ALONE
+//				Change or un-comment only if you REALLY need to.			
+//
+//=======================================================================//
+//				SEARCH VARIABLES
+//----------------------------------------------------//
+// Will be passed to a mixin look for "on-element" or "button"
+// Either the $vrcalendar-image will be placed on the element or on the button
+// If on element is selected, the button will be hidden
+$vravailforms: ".form-item-avail-filter-rcav-begin button,
+                .form-item-avail-filter-rcav-end button,
+                .form-item-rcav-begin button,
+                .form-item-rcav-end button
+               ";
+$vrcalendar-position: "on-element";
+
+//				PANELS
+//----------------------------------------------------//
+
+/* We use these to control the background and border styles */
+$panel-bg: darken(#fff, 5%);
+$panel-border-style: solid;
+$panel-border-size: 1px;
+
+/* We use this % to control how much we darken things on hover */
+$panel-function-factor: 10%;
+$panel-border-color: darken($panel-bg, $panel-function-factor);
+
+/* We use these to set default inner padding and bottom margin */
+$panel-margin-bottom: emCalc(20);
+$panel-padding: emCalc(20);
+
+/* We use these to set default font colors */
+$panel-font-color: #333;
+$panel-font-color-alt: #fff;
+
+$panel-header-adjust: true;
+
+//				BUTTONS
+//----------------------------------------------------//
+
+// Global button border style used for the vrweb-button-base, and included in the vrweb-button mixin
+$button-border:none;
+
+// We use this to set the default radius used throughout the core. 
+// Wanna use a totally rounded button? Just replace with $global-rounded
+$button-radius: $global-radius; 
+
+// You can include different padding arguments when including the vrweb-button mixin
+// it defaults to $button-sml
+$button-lrg: emCalc(12);
+$button-med: emCalc(10);
+$button-sml: emCalc(8);
+$button-tny: emCalc(8);
+
+// These font sizes control the button font size in the @mixin button-font-size
+// adjust as needed
+$button-font-lrg: 14px;
+$button-font-med: 14px;
+$button-font-sml: 14px;
+$button-font-tny: 14px;
+
+// We use this to control the inset-shadow 
+$active: true;
+$inset-shadow: false;
+
+// Inset shadow shiny edges and depressions.
+// Make sure to turn on $inset-shadow "true"
+$shiny-edge-size: 0 1px 0;
+$shiny-edge-color: rgba(#fff, .5);
+$shiny-edge-active-color: rgba(#000, .2);
+
+
+//				RECENTLY VIEWED
+//----------------------------------------------------//
+// Block title color.
+$recently-viewed-block-title-color: $primary-color;
+// Property title color.
+$recently-viewed-property-title-color: $white;
+// Property title size.
+$recently-viewed-property-title-size: 1em;
+// Property contents size.
+$recently-viewed-property-contents-size: 1em;
+// Property contents text-align.
+$recently-viewed-property-contents-align: center;
+// "View More" link color.
+$recently-viewed-more-link-color: $white;
+
+//=======================================================================//
+//
+//				#12 FULL VARIABLE DIRECTORY
+//				UNCOMMENT TO OVERRIDE ALL LOCAL VARIABLES	
+//
+//=======================================================================//
+//----------------------------------------------------------------------
+//    HEADER & SERVICE BAR 
+//    Style and Variables
+//--------------------------------------------------------------------//
+
+//service bar text color
+$service-bar-color: $white !default;
+
+//Also sets service bar button colors if you are using the full-width slideshow template
+$service-bar-bg: $tertiary-color !default; 
+//----------------------------------------------------------------------
+//    FOOTER 
+//    Styles, Typography, and Variables
+//--------------------------------------------------------------------//
+
+$footer-block-title-size:17px !default;
+$footer-block-title-color:$secondary-color !default;
+$footer-block-title-weight:700 !default;
+$footer-text-color:$primary-color !default;
+
+//----------------------------------------------------------------------
+//    ADVANCED SEARCH FORM VARIABLES
+//		See adv-searches for styles & default variables.
+//		Uncomment to override default variables in adv-searches.scss
+//--------------------------------------------------------------------//
+
+$off-canvas-mobile-search:true !default;
+$off-canvas-trigger-height:50px !default;
+$mobile-expanded-menu-height:355px !default;
+
+//----------------------------------------------------------------------
+//    AVAILABILITY CALENDARS 
+//		See booking-calendars for styles & default variables.
+//		Uncomment to override default variables in booking-calendars.scss
+//--------------------------------------------------------------------//
+
+//Background Color for the calendars and <thead>
+$vrcalendar-bg: $primary-color !default;
+
+//Base color theme used for the unselectable cells
+$vrcalendar-base-bg: #d6d6d6 !default;
+$vrcalendar-base-text-color: #959595 !default;
+
+//Base color theme used for the availbale cells
+$vrcalendar-available-bg: $white !default;
+$vrcalendar-available-text-color: $tertiary-color !default;
+
+//Calendar Navigation
+$vrcalendar-link-color:white !default;
+$vrcalendar-link-color-over:$tertiary-color !default;
+
+
+/**
+*   You dont really need to edit these variables,
+*   these just link up all the styles
+**/
+
+// Out
+$vrcalendar-top-out: $vrcalendar-available-bg !default;
+$vrcalendar-bottom-out: $vrcalendar-base-bg !default;
+$vrcalendar-deg-out: 145deg !default;
+
+// In
+$vrcalendar-top-in: $vrcalendar-base-bg !default;
+$vrcalendar-bottom-in: $vrcalendar-available-bg !default;
+$vrcalendar-deg-in: 145deg !default;
+
+//Selected
+$vrcalendar-selected-date: $vrcalendar-available-text-color !default;
+$vrcalendar-selected-date-color:$vrcalendar-available-bg !default;
+
+//Border color
+$vrcalendar-border-color:$vrcalendar-base-text-color !default;
+
+//----------------------------------------------------------------------
+//    VACATION RENTAL LISTINGS 
+//    Style and Variables
+//    See theme/_globals.scss for global search variables.
+//--------------------------------------------------------------------//
+
+$grid-view-active:false !default;
+
+//What color do you want your search summary text to be?
+$search-summary-color:$primary-color !default;
+
+// Color theme for Urgency Marketing
+$urgency-message-bg:$success-color !default; // background color
+$urgency-message-color:$white !default; // text color
+$urgency-message-border:solid 1px darken($urgency-message-bg, 5%) !default; // border color
+
+//----------------------------------------------------------------------
+//    RESCMS CHECKOUT PAGE
+//    Style and Variables
+//--------------------------------------------------------------------//
+
+// Fieldset background colors for mobile and desktop
+// By default, they are the same
+$checkout-fieldset-bg:$muted-color !default;
+$checkout-fieldset-bg-desktop:$checkout-fieldset-bg !default;
+
+// Fieldset border colors, shows for small-up
+$checkout-fieldset-border-color:rgba(0, 0, 0, .15) !default;
+
+// Alt color used for striping odd/even cells in tables
+$checkout-fieldset-alt-bg: darken($muted-color, 4%) !default;
+
+// Legend background and text colors for mobile and desktop
+// By default, they are the same
+// legend mobile bg color
+$checkout-legend-bg:$primary-color !default;
+
+// legend desktop bg color
+$checkout-legend-bg-desktop:$checkout-legend-bg !default; 
+
+// legend mobile text color
+$checkout-legend-color:$white !default;
+
+// legend desktop text color 
+$checkout-legend-color-desktop:$checkout-legend-color !default; 
+
+// the border color for pricing totals
+$lineitem-border-color:$muted-color-alt !default;
+
+
+//----------------------------------------------------------------------
+//    HOMEPAGE TRIPTYCH 
+//		See triptych for styles & default variables.
+//		Uncomment to override default variables in triptych.scss
+//--------------------------------------------------------------------//
+
+// Color for title blocks (Blog, Events, Things to Do)
+$triptych-block-title-color: $primary-color !default;
+
+// Color for content titles.
+$triptych-content-title-color: $tertiary-color !default;
+
+//----------------------------------------------------------------------
+//    BLOG, TTD, & EVENTS
+//    Style and Variables
+//--------------------------------------------------------------------//
+$recommended-flag-bg:$tertiary-color !default;
+$recommended-flag-color:$white !default;
+
+$bte-date-time:$primary-color !default;
+$bte-link-color:$tertiary-color !default;
+$bte-link-color-hover:$success-color !default;
+
+//----------------------------------------------------------------------
+// Uncomment these if you really REALLY need em...
+//--------------------------------------------------------------------//
+/*
+$topbar-dropdown-label-color: #555;
+$topbar-dropdown-label-text-transform: uppercase;
+$topbar-dropdown-label-font-weight: bold;
+$topbar-dropdown-label-font-size: emCalc(10);
+
+
+$topbar-dropdown-bg: $tertiary-color;
+$topbar-dropdown-link-color: #fff;
+$topbar-dropdown-link-bg: lighten($topbar-bg, 5%);
+$topbar-dropdown-toggle-size: 5px;
+$topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-alpha: 0.5;
+
+//Set Nav Link Color for Mobile, Set to $primary Color for Desktop
+$primary-nav-link-color: #000; //for Desktop
+
+// Background color for the top bar
+
+
+// Divider Styles 
+$topbar-divider-border-bottom: solid 1px lighten($topbar-bg, 10%);
+$topbar-divider-border-top: solid 1px darken($topbar-bg, 10%);
+
+// Top menu icon styles
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: emCalc(13);
+$topbar-menu-link-weight: bold;
+$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: #fff;
+$topbar-menu-link-color-toggled: #888;
+$topbar-menu-icon-color-toggled: #888;
+
+// Styles for mobile
+$topbar-mobile-title-font-size:emCalc(16);
+
+// Sticky Class
+$topbar-sticky-class: ".sticky";
+*/
+//$button-font-color: #fff;
+//$button-font-color-alt: #333;
+//$button-font-align: center;
+//$button-font-weight: normal;
+//$button-font-family: $body-gf;
+
+/* We use these to control various hover effects. */
+//$button-function-factor: 10%;
+
+/* We use this to control the display property. */
+//$button-display: inline-block;
+//$button-margin-bottom: emCalc(20);
+
+/* We use this to set default opacity for disabled buttons. */
+//$button-disabled-opacity: 0.6;
+
+// Dont use this right now unless you can explain this?
+//$base-font-size: 16px;
+//$em-base: 16px;
+
+/*============================
+ Breadcrumbs
+ These are hidden by default
+ uncomment styles and varibales below 
+ if you are showing breadcrumbs
+===========================*/
+
+/*==================
+	Styles
+===================*/
+/*ul.breadcrumbs {
+  margin: $crumb-margin;
+}*/
+
+/*==================
+	Variables
+===================*/
+// We use this to set the background color for the breadcrumb container. 
+/*$crumb-bg: #fff;
+
+// We use these to set the padding around the breadcrumbs. 
+$crumb-padding: emCalc(9, 14, 9);
+$crumb-side-padding: emCalc(12);
+
+// We use these to set the margin around the breadcrumbs. 
+$crumb-margin: 0.75em 0;
+
+// We use these to control border styles. 
+$crumb-function-factor: 10%;
+$crumb-border-size: 1px;
+$crumb-border-style: solid;
+$crumb-border-color: darken($crumb-bg, $crumb-function-factor);
+$crumb-radius: $global-radius;
+
+// We use these to set various text styles for breadcrumbs. 
+$crumb-font-size: emCalc(11);
+$crumb-font-color: $primary-color;
+$crumb-font-color-current: #333;
+$crumb-font-color-unavailable: #999;
+$crumb-font-transform: uppercase;
+$crumb-link-decor: underline;
+
+// We use these to control the slash between breadcrumbs 
+$crumb-slash-color: #aaa;
+$crumb-slash: "/";*/
+
+
+//================================================
+
+// Import all default configuration variables for rezFusion Foundation.
+//
+// The variables are split into various files because there are just so many
+// of them and having them in the one file can be hard to navigate.
+//
+// If you need to add any extra partials, please do so at the end of the list!
+
+// Base setup variables.
+
+
+// Component/Layout setup variables.
+
+// Custom/extra setup variables.
+// @import "theme/foo";

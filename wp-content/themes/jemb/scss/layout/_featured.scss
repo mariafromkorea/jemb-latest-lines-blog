@@ -1,0 +1,26 @@
+.l-featured {
+  background:$muted-color;
+  position:relative;
+
+  section {
+    @include grid-row;
+    max-width: 75em;
+  }
+  .tpl-fw &{
+    section{
+            max-width:none;
+          }
+  }
+
+  .featured-tabs {
+    select.ctools-jump-menu-select {
+      width: 300px !important;
+    }
+  }
+
+  .field-name-field-banner-image {
+    img {
+      width:100%;
+    }
+  }
+}

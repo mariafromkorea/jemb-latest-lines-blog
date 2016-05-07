@@ -1,0 +1,117 @@
+//=============================================
+//    FOOTER 
+//    Styles, Typography, and Variables
+//=============================================
+
+//$footer-block-title-size:17px;
+//$footer-block-title-color:$secondary-color;
+//$footer-block-title-weight:700;
+//$footer-text-color:$primary-color;
+
+//=============================================
+//  Footer styles.
+//-------------------------------------------//
+.footer-wrapper {
+  background:$muted-color;
+  text-align:center;
+  padding-top:20px;
+
+  @media #{$small} {
+    text-align:left;
+    box-shadow:0px -2px 3px rgba(0, 0, 0, .2);
+  }
+
+  *, a {
+    color:$footer-text-color;
+  }
+
+  a:hover, a:active {
+    text-decoration:underline;
+    color:$secondary-color;
+  }
+  .view-vacation-rental-listings h6,
+  .block-title {
+    margin-bottom:0px;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:18px;
+    color:$footer-block-title-color;
+    letter-spacing:.075em;
+    margin-top:0px;
+  }
+}
+
+.footer-middle-content {
+  @include clearfix();
+
+  section {
+    @include grid-column(12);
+    padding:15px;
+
+    * {
+      margin-bottom:0px;
+    }
+
+    @media only screen and (min-width:emCalc(600)) and (max-width:emCalc(767)){
+      @include grid-column(6);
+      text-align:left;
+    }
+  }
+  @media #{$small} {
+    text-align:left;
+    
+    .block-vrweb-base-contact-us {
+      @include grid-column(4);
+    }
+    .block-menu-menu-quick-links-one {
+      @include grid-column(3);
+    }
+  }
+
+  //Property by name
+  .block-views-1f0e0e87c933b05654af099bcf51afea {
+    .view {
+      text-align:left;
+
+      .view-header {
+        @media only screen and (max-width:emCalc(599)) {
+          text-align:center;
+        }
+      }
+    }
+
+    @media only screen and (min-width:emCalc(600)) and (max-width:emCalc(767)) {
+      @include grid-column(12);
+    }
+    @media #{$small} {
+      @include grid-column(5);
+
+      .view{
+        float:right;
+      }
+    }
+  }
+
+
+}
+
+.footer-bottom-wrapper {
+  padding-bottom:10px;
+  padding-top:10px;
+
+  .copyright,
+  .powered-by {
+    text-align:center;
+    line-height:1.4;
+    font-size:13px;
+  }
+  @media #{$small} {
+    .copyright{
+      text-align:left;
+    }
+
+    .powered-by {
+      text-align:right;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.front {
+  #page-title {
+    @include grid-column(12);
+    text-align:center;
+    background:$muted-color;
+    margin:0px auto;
+    padding:15px 15px 0px;
+  }
+  .l-main,
+  .main.columns {
+    padding:0;
+  }
+  //featured properties block
+  .block-views-d7fb3a93163bfe4c1d91f19e8effd379 {
+    clear:both;
+    background:$muted-color;
+  }
+
+  //Homeapge page content
+  .node-page.view-mode-full {
+    padding-top:25px;
+
+    h1, h2, h3, h4, h5, h6 {
+      text-align:center;
+    }
+
+    @media #{$small} {
+      .group-content {
+        display:block;
+        float:none;
+        max-width:90%;
+        margin:auto;
+      }
+    }
+  }
+
+  .l-content-bottom {
+    padding-bottom:20px;
+  }
+}

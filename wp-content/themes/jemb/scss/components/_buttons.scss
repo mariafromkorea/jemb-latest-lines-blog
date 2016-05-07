@@ -1,0 +1,16 @@
+//=============================================
+//
+//  Button styles.
+//
+//  See _vrweb-settings for all button variables.
+//-----------------------------------------------------------------//
+//Button Colors
+@import 'base/mixins';
+
+//Universal styles to be included with all buttons
+
+a.vrweb-button, .vrweb-button a {
+  @include vrweb-button();
+}
+
+

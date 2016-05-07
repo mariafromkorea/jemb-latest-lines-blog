@@ -1,0 +1,343 @@
+/**
+ * Grouping Styles - includes full content and teaser view modes for grouping taxonomy term
+ * This layout contains some things that could probably be components. However, it's easier to 
+ * just include one SCSS file.
+ */
+
+.vocabulary-vrfusion-groupings.view-mode-taxonomy_teaser {
+
+  @media #{$medium-down} {
+    @include collapse(both);
+  }
+
+  @media #{$tiny-down} {
+    border-bottom:1px solid lighten($tertiary-color, 50%);
+    padding-bottom:1em !important;
+    margin-bottom:.5em !important;
+  }
+
+  .group-header {
+
+    @media #{$medium-down} {
+      @include collapse(both);
+      margin-bottom:1.5em;
+    }
+
+    h3 {
+      @media #{$medium-down}{
+        margin-bottom: 0;
+      }
+
+      @media #{$small-down} {
+        font-size: 1em;
+      }
+
+    }
+
+    .field-name-more-link {
+      @include collapse(both);
+      @include teaser-button-position();
+
+      @media #{$medium-down} {
+        top:0;
+      }
+
+      a {
+        @include vrweb-button();
+        @include responsive-button();
+      }
+    }
+  }
+
+  .group-left {
+
+    @include collapse(right);
+
+    @media #{$medium-down} {
+      @include collapse(left);
+    }
+
+    @media #{$tiny-down} {
+      @include grid-column(6);
+    }
+
+    img {
+      margin: 0 auto;
+      @include image-borders();
+    }
+  }
+
+  .group-right {
+
+    @media #{$medium-down} {
+      @include collapse(right);
+    }
+
+    @media #{$tiny-down} {
+      @include grid-column(6);
+    }
+
+    .field-name-field-vr-group-location-desc {
+      margin-bottom: 0.75em;
+
+    }
+
+    .field-name-field-vr-grouping-short-desc,
+    .taxonomy-term-description {
+    }
+  }
+
+  .group-footer {
+  
+    clear:both;
+    padding:1em;
+
+    @media #{$tiny-down} {
+      padding:1em 0;
+    }
+
+    table {
+      width:100%;
+
+      @media #{$tiny-down} {
+
+  * {
+    font-size:$p-font-size-small;
+  }
+
+  th:nth-child(4),
+  th:nth-child(3),
+  td:nth-child(4),
+  td:nth-child(3) {
+    display:none;
+  }
+      }
+    }
+  }
+}
+
+.page-taxonomy-term {
+
+  .vocabulary-vrfusion-groupings.view-mode-full {
+
+     // Header
+     .group-header {
+      margin-bottom:1em;
+     }
+
+     // Tabs
+   /* .group-left {
+      border-style: $vr-full-tab-container-border-style;
+      border-width: $vr-full-tab-container-border-width;
+      border-color: $vr-full-tab-container-border-color;
+      background: $vr-full-tab-container-bg;
+      margin-bottom: $vr-full-tab-container-margin-bottom;
+
+
+      .content {
+         font-size: 100%;
+      }
+
+      .section-container.auto {
+         margin-bottom: 0.5em;
+
+          & > section {
+
+            & > .content {
+              border: $vr-full-tab-content-border;
+            }
+
+            & > .title {
+              background: $vr-full-tab-title-bg;
+              border: $vr-full-tab-title-border;
+
+              @media #{$small-down} {
+                margin-bottom: 0.5em;
+              }
+
+              &:hover {
+                background: $vr-full-tab-title-bg-hover;
+              }
+
+              a {
+                padding: $vr-full-tab-title-padding;
+                color: $vr-full-tab-title-color;
+                font-size: $vr-full-tab-title-size;
+                font-weight: $vr-full-tab-title-weight;
+                text-transform: $vr-full-tab-title-text-transform;
+
+                @media #{$medium-down} {
+                  padding: 0.75em;
+                }
+
+                @media #{$small-down} {
+                  padding: 0.5em;
+                }
+              }
+            }
+          }//section
+
+          & > section:first-child {
+
+            & > .title {
+              border-right: 0;
+
+              @media #{$small-down} {
+                border: $vr-full-tab-title-border;
+              }
+            }
+          }//first-child
+
+          & > section:last-child:not(:nth-child(2)) {
+
+            & > .title {
+              border-left: 0;
+
+              @media #{$small-down} {
+                border: $vr-full-tab-title-border;
+              }
+            }
+          }//nth-child
+
+          & > section.active {
+
+            > .title {
+              background: $vr-full-tab-title-bg-active;
+              border-bottom: 0;
+
+              @media #{$small-down} {
+                border: $vr-full-tab-title-border;
+              }
+
+              &:hover {
+                background: $vr-full-tab-title-bg-hover-active;
+              }
+
+              a {
+                color: $vr-full-tab-title-color-active;
+                font-weight: $vr-full-tab-title-weight-active;
+                outline: 0;
+              }
+            }
+          }//section active
+      }
+    }*/
+  }
+
+  .view-grouped-units {
+    clear:both;
+    margin-top:20px;
+    // Side bar Search - Groups of Vacation Rentals
+    #views-exposed-form-grouped-units-page-details-unit-list {
+
+      // Base styles for the sidebar advanced search.
+      .views-widget-filter-avail_filter label,
+      .views-exposed-widgets > .views-exposed-widget > label {
+
+      }
+
+      .views-exposed-widget {
+  @include clearfix();
+      }
+
+      .views-widget-sort-by {
+  @include clearfix();
+      }
+
+      #edit-beds-numeric-wrapper,
+      .form-item-avail-filter-rcav-begin,
+      .form-item-avail-filter-rcav-adult {
+  @include grid-column(6);
+  @include collapse(left);
+      }
+
+      #edit-baths-numeric-wrapper,
+      .form-item-avail-filter-rcav-end,
+      .form-item-avail-filter-rcav-child {
+  @include grid-column(6);
+  @include collapse(right);
+      }
+
+      #edit-field-vr-featured-amenities-tid-wrapper {
+  margin-bottom: emCalc(20);
+  label[for="edit-field-vr-featured-amenities-tid"] {
+    font-size: emCalc(16);
+    font-weight: normal;
+  }
+  label {
+    font-size:emCalc(12);
+  }
+    .form-item-field-vr-featured-amenities-tid {
+      .form-item {
+        margin-bottom: emCalc(5);
+      }
+    .form-type-bef-checkbox {
+      @include grid-column(6);
+      padding: 0;
+      @media all and (max-width:940px){
+        @include grid-column(12);
+        @include collapse(both);
+      }
+
+      label {
+        display: inline;
+      }
+    }
+  }
+  input[type="checkbox"], input[type="radio"], select {
+    margin: 0;
+  }
+      }
+    }
+  }
+}
+
+// Inquiry Form
+
+.section-complex-inquiry {
+
+  label {
+    font-weight: bold;
+  }
+
+  .field-name-field-name, .field-name-field-body-no-summary, .form-actions {
+    @include grid-column(12);
+  }
+
+  .field-name-field-email, .field-name-field-phone-number,
+  .field-name-field-inquiry-arrive, .field-name-field-inquiry-depart,
+  .field-name-field-inquiry-adults, .field-name-field-inquiry-children {
+    @include grid-column(6);
+
+    @media #{$tiny-down}{
+      @include grid-column(12);
+
+    }
+  }
+
+  .field-name-field-inquiry-arrive, .field-name-field-inquiry-depart {
+    fieldset {
+      padding: 0;
+      margin: .5em 0;
+    }
+  }
+
+  .field-name-field-inquiry-flexible-dates {
+    @include grid-column(6);
+  }
+
+  .field-name-field-inquiry-complex {
+    @include grid-column(6);
+  }
+
+  .form-item-field-inquiry-flexible-dates-und {
+    input.form-checkbox {
+      float: left;
+      margin-right: emCalc(5);
+    }
+  }
+
+  .form-item-field-inquiry-complex-und {
+    clear: left;
+  }
+}

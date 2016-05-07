@@ -1,0 +1,180 @@
+//=============================================
+//    HOMEPAGE TRIPTYCH 
+//    Style and Variables
+//=============================================
+
+// Color for title blocks (Blog, Events, Things to Do)
+//$triptych-block-title-color: $primary-color;
+
+// Color for content titles.
+//$triptych-content-title-color: $tertiary-color;
+
+//=============================================
+//
+//  Triptych styles.
+//  This component only exists on the homepage
+//-------------------------------------------//
+
+.l-triptych {
+  display:none;
+
+  @media only screen and (min-width:emCalc(600)) {
+    display:block;
+  }
+
+  //Global styles
+  section {
+    @include grid-column(12);
+    @include min(both);
+    
+    @media only screen and (min-width:emCalc(740)) and (max-width:emCalc(1149)) {
+      @include grid-column(6);
+      @include grid-clear(2);
+    }
+
+    @media only screen and (min-width:emCalc(1150)){
+      @include grid-column(4);
+    }
+
+    .view-header {
+      padding-bottom:10px;
+
+      h4 {
+        @media only screen and (max-width:emCalc(739)) {
+          display:block;
+          width:100%;
+          text-align:center;
+
+          &, a {
+            background:$secondary-color;
+            color:$white;
+          }
+          a {
+            display:block;
+            width:100%;
+            font-weight:700;
+            text-transform:uppercase;
+            letter-spacing:.15em;
+            font-size:16px;
+            padding:8px 15px;
+            box-sizing:content-box;
+            margin-left:-15px;
+            text-decoration:none !important;
+            color:$white !important;
+
+            &:hover, &:active {
+              background:$tertiary-color;
+            }
+
+            &:after {
+              content:'';
+              display:inline-block;
+              width:11px;
+              height:16px;
+              background:url("../images/chevron-right-white.svg") center no-repeat;
+              margin-left:10px;
+            }
+          }
+        }
+
+        @media only screen and (min-width:emCalc(740)) {
+          margin-bottom:0px;
+
+          &, a {
+            font-weight:700;
+            color:$secondary-color;
+            text-transform:uppercase;
+            letter-spacing:.1em;
+            font-size:20px;
+          }
+
+          a {
+            display:block;
+            text-align:left;
+
+            &:after {
+              content:'';
+              display:inline-block;
+              width:11px;
+              height:16px;
+              background:url("../images/chevron-right-black.svg") center no-repeat;
+              margin-left:10px;
+              opacity:0;
+              transition:opacity .25s ease-out;
+            }
+
+            &:hover, &:active {
+              text-decoration:none;
+              color:$primary-color;
+
+              &:after {
+                opacity:1.0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //Nodes
+  .node-promoted {
+    margin-bottom:20px !important;
+
+    .group-left {
+      @include grid-column(4);
+      @include min(both);
+    }
+
+    .group-right {
+      @include grid-column(8);
+    }
+
+    img {
+      display:block;
+      width:100%;
+      height:auto;
+      @include image-borders();
+    }
+
+    .field-name-field-event-date {
+      padding-bottom:5px;
+    }
+
+    .field-name-title {
+      h5, h6 {
+        @include teaser-titles($mtop:0px);
+      }
+    }
+  }
+
+  //Blog Block, only show for small up
+  .block-views-blog-block-homepage-featured {
+    display:none;
+
+    @media #{$small}{
+      display:block;
+    }
+
+    @media only screen and (min-width:emCalc(767)) and (max-width:emCalc(1149)) {
+      @include grid-column(12);
+
+      .view-content > div {
+        @include grid-column(4);
+        @include grid-clear(3);
+
+        .group-left, 
+        .group-right {
+          @include grid-column(12);
+          @include min(both);
+        }
+
+        .field-name-title {
+          h5, h6 {
+            margin-top:8px;
+          }
+        }
+      }
+    }
+  }
+}
