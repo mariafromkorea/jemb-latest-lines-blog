@@ -7,4 +7,41 @@
  Template:     shop-isle
  Version:      1.0.0
 */
+
+//============================
+// Grid
+//============================
+$row-width: 1170px !default;
+$column-gutter: 30 !default;
+
+//Grid
+$large-screen-up: 1200px;
+$large-screen-down: 1199px;
+$medium-screen-up: 992px;
+$medium-screen-down: 991px;
+$small-screen-up:768px;
+$small-screen-down:767px;
+$tiny-screen-up:481px;
+$tiny-screen-down:480px;
+
+// Auxiliary breakpoint variables.
+$screen: "only screen";
+$small: "only screen and (min-width: #{$small-screen-up})";
+$small-down: "only screen and (max-width: #{$small-screen-down})";
+
+$medium: "only screen and (min-width: #{$medium-screen-up})";
+$medium-down: "only screen and (max-width:#{$medium-screen-down})";
+
+$large: "only screen and (min-width: #{$large-screen-up})";
+$large-down: "only screen and (max-width:#{$large-screen-down})";
+
+$tiny: "only screen and (min-width:#{$tiny-screen-up})";
+$tiny-down: "only screen and (max-width:#{$tiny-screen-down})";
+
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+
+$head-gf:"Roboto Condensed", sans-serif;
 @import "mixins/mixins";
+@import "mixins/grid-mixins";
+@import "layout/latest-lines";

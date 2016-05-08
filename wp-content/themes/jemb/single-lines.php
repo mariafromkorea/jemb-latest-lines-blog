@@ -7,29 +7,48 @@ get_header(); ?>
 
 <!-- Wrapper start -->
 	<div class="main">
-
+		<div class="latest-lines-post">
 		<!-- Post single start -->
-		<section class="page-module-content module">
-			<div class="container">
+			<div class="lines-container">
 
-				<div class="row">
+				<div class="row wider">
 
 					<!-- Content column start -->
 					<div class="col-sm-12">
 
-					<?php while ( have_posts() ) : the_post(); ?>
+						<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php endwhile; // end of the loop. ?>
-						<?php the_title( '<h3>', '</h3>' ); ?>
+						<?php endwhile; // end of the loop. ?>
+						<div class="lines-title">
+							<?php the_title( '<h1>', '</h1>' ); ?>
+						</div>
+						<div class="lines-subtitle">
+							<span class="author">
+								<?php the_author(); ?>
+							</span>
+							<span class="date">
+							<?php the_date(); ?>
+							</span>
+						</div>
 						
-							<?php $image = get_field('lines_photo'); if( !empty($image) ): ?>
-							<div class="photo">
-								<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+						<?php $image = get_field('lines_photo'); if( !empty($image) ): ?>
+						<div class="photo">
+							<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+						</div>
+						<?php endif; ?>
+
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="video">
+									<?php the_field('lines_video'); ?>
+								</div>
+
+								<div class="quote">
+									<h3>Quote of the Day</h3>
+									<span class="quote-text"><?php the_field('lines_quote'); ?></span>
+									<span class="quote-author"><?php the_field('quote_author'); ?></span>
+								</div>
 							</div>
-							<?php endif; ?>
-						
-						<div class="video">
-							<?php the_field('lines_video'); ?>
 						</div>
 					</div>
 				</div>
@@ -38,20 +57,11 @@ get_header(); ?>
 
 					<!-- Sidebar column start -->
 					<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1 sidebar">
-						<span class="author">
-							<?php the_author(); ?>
-						</span>
-						<span class="date">
-						<?php the_date(); ?>
-						</span>
-						<div class="quote">
-							<?php the_field('lines_quote'); ?>
-							<?php the_field('quote_author'); ?>
-						</div>
+						
 
 					</div>
 					<!-- Sidebar column end -->
-					<div class="body-content col-sm-12">
+					<div class="body-content">
 						<?php
 							$content = get_the_content('Read more');
 							print $content;
@@ -66,9 +76,8 @@ get_header(); ?>
 						?>
 					</div>
 				</div><!-- .row -->
-
 			</div>
-		</section>
+			</div>
 		<!-- Post single end -->
 		
 

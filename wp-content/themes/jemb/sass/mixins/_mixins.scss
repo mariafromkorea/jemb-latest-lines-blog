@@ -1,3 +1,66 @@
-h3 {
-  color:red !important;
+@mixin absolute-images($percentage) {
+  position:relative;
+  display:block;
+  width:100%;
+  height:0px;
+  overflow:hidden;
+  padding-top:$percentage;
+
+  img {
+    display:block;
+    position:absolute;
+    min-width:102%;
+    height:auto;
+    margin:auto;
+    top:0px;
+    left:-1%;
+    right:0px;
+    bottom:0px;
+  }
+}
+@mixin min($side){
+  @if $side == 'both' {
+    padding-left:0px;
+    padding-right:0px;
+  }
+  @if $side == 'left' {
+    padding-left:0px;
+  }
+  @if $side == 'right' {
+    padding-right:0px;
+  }
+}
+@mixin absolute-center($top:0, $bottom:0, $left:0, $right:0){
+  position:absolute;
+  margin:auto;
+  top:$top;
+  bottom:$bottom;
+  left:$left;
+  right:$right;
+}
+@mixin grid-clear($num, $gutter:16px) {
+  $padding:$gutter/2;
+  clear:none;
+  padding-left:$padding;
+  padding-right:$padding;
+
+  &:nth-of-type(#{$num}n+1) {  
+    clear:both;
+    padding-left:0px;
+    padding-right:$gutter;
+  }
+
+  &:nth-of-type(#{$num}n) {
+    clear:none;
+    padding-right:0px;
+    padding-left:$gutter;
+  }
+}
+@mixin clearfix() {
+  &:after{
+    display:block;
+    width:0;
+    height:0;
+    clear:both;
+  }
 }
