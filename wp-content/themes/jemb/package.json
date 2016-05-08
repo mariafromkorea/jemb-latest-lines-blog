@@ -1,37 +1,35 @@
 {
-  "name": "vrweb",
+  "name": "wp-theme-cabana",
   "version": "0.0.1",
-  "description": "Front end tasks for rezFusion",
+  "description": "Front end tasks for cabana",
   "scripts": {
-    "postinstall": "find node_modules/ -name '*.info' -type f -delete && mkdir imagemin"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/bluetent/vrweb-D7"
+  "author": {
+    "name": "Colin OBrien"
   },
-  "bugs": {
-    "url": "https://github.com/bluetent/vrweb-D7/issues"
-  },
-  "homepage": "https://github.com/bluetent/vrweb-D7",
+  "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.10",
-    "gulp-autoprefixer": "^2.0.0",
+    "gulp-autoprefixer": "^2.2.0",
     "gulp-cache": "^0.2.4",
     "gulp-changed": "^1.1.0",
-    "gulp-clean": "^0.3.1",
     "gulp-consolidate": "^0.1.2",
     "gulp-iconfont": "^1.0.0",
-    "gulp-imagemin": "^2.1.0",
     "gulp-livereload": "^3.0.2",
-    "gulp-load-plugins": "^0.10.0",
     "gulp-notify": "^2.1.0",
     "gulp-plumber": "^0.6.6",
     "gulp-postcss": "^3.0.0",
-    "gulp-sass": "^1.2.4",
-    "gulp-sourcemaps": "^1.2.8",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
     "gulp-svgmin": "^1.0.0",
     "gulp-util": "^3.0.1",
-    "lodash": "^2.4.1",
-    "yargs": "^3.15.0"
-  }
+    "lodash": "^2.4.1"
+  },
+  "readme": "Cabana\n===\n\nA WordPress base theme for Bluetent, based on Underscores. Uses Gulp for compiling, Autoprefixer and [Straight-up](https://github.com/kennethormandy/straight-up) (Neat, without Bourbon) for grids. Uses an CSS3 offcanvas navigation for mobile. Meant to be lightweight to quickly get your project up to speed, without getting in your way. This theme is not meant to be used as a parent theme, so get in there and make it bend to your will.\n\nGetting Started\n---------------\n\nUse the [Yeoman Generator](https://github.com/bluetent/generator-wp-cabana) (recommended) to intall this theme into your WordPress project.\n\nYou could also clone this repo and go from there, but thats a lot of work.\n",
+  "readmeFilename": "README.md",
+  "_id": "wp-theme-cabana@0.0.1",
+  "_shasum": "ff1317780f915571ed92dcce6daaa0bfb4673312",
+  "_resolved": "git+https://github.com/bluetent/wp-theme-cabana#554baef08c5378d3a7f90acbf82f341268704806",
+  "_from": "cabana@git+https://github.com/bluetent/wp-theme-cabana"
 }

@@ -1,56 +1,91 @@
 /**
- * Front end tasks for rezFusion.
+ * Front end tasks.
  */
 
-var gulp = require('gulp'),
-    plugins = require('gulp-load-plugins')({
-        lazy: false
-    }),
-    argv = require('yargs').argv;
+var gulp          = require('gulp');
+var gutil         = require('gulp-util');
+var plumber       = require('gulp-plumber');
+var sass          = require('gulp-sass');
+var sourcemap     = require('gulp-sourcemaps');
+var autoprefixer  = require('gulp-autoprefixer');
+var livereload    = require('gulp-livereload');
+var notify        = require('gulp-notify');
+var changed       = require('gulp-changed');
+var iconfont      = require('gulp-iconfont');
+var consolidate   = require('gulp-consolidate');
+var svgmin        = require('gulp-svgmin');
+var cache         = require('gulp-cache');
 
 // Define variables for our paths
 var paths = {
-    sass: ['scss/*.scss', 'scss/**/*.scss'],
-    css: './css',
-    files: 'templates/*.php',
-    js: 'js/*.js',
-    img: 'images/',
-    imgmin: 'imagemin/*.{jpg,png,gif,svg}',
-    maps: './maps'
+  sass: ['./sass/*.scss', './sass/**/*.scss'],
+  files: '*.php',
+  js: './js/*.js',
+  img: './images/*.{jpg,png,gif,svg}',
+  css: './'
 };
 
-console.log(argv);
+// Sass error function
+function errorAlert(error){
+  notify.onError({
+    title: 'SCSS Error',
+    message: 'Check your terminal',
+    sound: 'Sosumi'
+  })(error);
+  console.log(error.toString());
+  this.emit('end');
+};
 
-// Sass stylesheet tasks
-gulp.task('sass', require('./tasks/styles').sass(gulp, plugins, paths));
-gulp.task('sassdev', require('./tasks/styles').sassdev(gulp, plugins, paths));
-
-// Minify images 
-gulp.task('img', require('./tasks/images').img(gulp, plugins, paths));
-
-// Create icon font from a folder of SVGs (icons/*.svg). Has to be run separately from default task
-gulp.task('icons', require('./tasks/icons').icons(gulp, plugins, paths));
+// Sass Tasks
+// Set Sass and Autoprefix options here
+gulp.task('sass', function() {
+  return gulp.src(paths.sass)
+    .pipe(plumber({errorHandler: errorAlert}))
+    .pipe(sourcemap.init({loadMaps: true}))
+    .pipe(sass())
+    .on("error", notify.onError({
+      message: 'Error: <%= error.message %>'
+    }))
+    .pipe(autoprefixer('> 0.25%'))
+    .pipe(sourcemap.write('./maps'))
+    .pipe(gulp.dest(paths.css));
+});
 
 // Clear the gulp cache - run `gulp clear`
-gulp.task('clear', function(done) {
-    return plugins.cache.clearAll(done);
+gulp.task('clear', function (done) {
+  return cache.clearAll(done);
 });
 
 // Watch function
-// Pass flag --dev to generate sourcemap
-gulp.task('watch', function() {
-    if (argv.dev) {
-        gulp.watch(paths.sass, ['sassdev']);
-    } else {
-        gulp.watch(paths.sass, ['sass']);
-    }
-    gulp.watch(paths.imgmin, ['img']);
-    plugins.livereload.listen({
-        basePath: './**'
-    });
-    gulp.watch(['./css/*.css', 'templates/*.php', 'js/*.js', 'images/*.{jpg,png,gif,svg}', 'imging/*.{jpg,png,gif,svg}']).on('change', plugins.livereload.changed);
-
+gulp.task('watch', function () {
+  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.img, ['img']);
+  livereload.listen({basePath: './**'});
+  gulp.watch(['style.css', '*.php', 'js/*.js', 'images/*.{jpg,png,gif,svg}']).on('change', livereload.changed);
 });
 
 // Define default task
 gulp.task('default', ['watch']);
+
+// Create icon font from a folder of SVGs
+// Has to be run separately from default task
+// To use, run `gulp icons`
+gulp.task('icons', function () {
+  gulp.src(['icons/*.svg'])
+    .pipe(iconfont({
+      fontName: 'icons',
+      appendCodepoints: true,
+      normalize: true
+    }))
+    .on('codepoints', function (codepoints, options) {
+      gulp.src('sass/typography/_icons-template.scss')
+        .pipe(consolidate('lodash', {
+          glyphs: codepoints,
+          fontName: 'icons',
+          fontPath: 'fonts/icons/',
+          className: 'icon'
+        }))
+        .pipe(gulp.dest('sass/elements'));
+    })
+    .pipe(gulp.dest('fonts/icons'));
+});
