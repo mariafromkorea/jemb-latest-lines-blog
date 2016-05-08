@@ -55,11 +55,6 @@ get_header(); ?>
 				<div class="row">
 					<!-- Content column end -->
 
-					<!-- Sidebar column start -->
-					<div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1 sidebar">
-						
-
-					</div>
 					<!-- Sidebar column end -->
 					<div class="body-content">
 						<?php
@@ -69,6 +64,17 @@ get_header(); ?>
 					</div>
 					<div class="bio col-sm-12">
 						<?php $author = get_the_author(); ?>
+						<?php
+//Assuming $post is in scope
+if (function_exists ( 'mt_profile_img' ) ) {
+    $author_id=$post->post_author;
+    mt_profile_img( $author_id, array(
+        'size' => 'thumbnail',
+        'attr' => array( 'alt' => 'Alternative Text' ),
+        'echo' => true )
+    );
+}
+?>
 						<?php 
 						    if ( function_exists( 'get_Sexy_Author_Bio' ) ) {
 						        echo get_Sexy_Author_Bio();
