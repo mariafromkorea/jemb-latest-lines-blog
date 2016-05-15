@@ -112,8 +112,9 @@
 
 						<!-- Sidebar column start -->
 						<div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
-
-							<?php do_action( 'shop_isle_sidebar' ); ?>
+							<h2>Sort by Authors</h2>
+							<?php //do_action( 'shop_isle_sidebar' ); ?>
+							<?php wp_list_authors($args); ?>
 
 						</div>
 						<!-- Sidebar column end -->
