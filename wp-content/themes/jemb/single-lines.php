@@ -75,12 +75,15 @@ get_header(); ?>
 								<div class="video">
 									<?php the_field('lines_video'); ?>
 								</div>
+								<?php $value = get_field('lines_quote'); if( !empty($value) ): ?>
 
 								<div class="quote">
 									<h3>Quote of the Day</h3>
 									<span class="quote-text"><?php the_field('lines_quote'); ?></span>
 									<span class="quote-author"><?php the_field('quote_author'); ?></span>
 								</div>
+								<?php endif; ?>
+								
 								<div class="body-content">
 									<?php
 										$content = get_the_content('Read more');
