@@ -29,6 +29,8 @@ function register_custom_posts_init() {
 
 add_action( 'init', 'remove_custom_post_comment' );
 
+remove_filter('pre_user_description', 'wp_filter_kses');
+
 function remove_custom_post_comment() {
     remove_post_type_support( 'lines', 'comments' );
 }
