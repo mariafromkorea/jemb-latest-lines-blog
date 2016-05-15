@@ -53,15 +53,15 @@ get_header(); ?>
 								</span>
 							</div>
 						</div>
-						<div class="profile">
+						<div class="profile" id="profile">
 							<div class="row">
-								<a id="bio-toggle" onclick="document.getElementById('bio').classList.toggle('show-bio');">More Info</a>
+								<a id="bio-toggle" onclick="document.getElementById('profile').classList.toggle('show-bio');">More Info</a>
 							<div class="social">
-								<a href="<?php echo get_the_author_meta( 'sabfacebook' );?>" target="_blank" class="facebook">facebook</a>
-								<a href="<?php echo get_the_author_meta( 'sabinstagram' );?>" target="_blank" class="instagram">instagram</a>
+								<a href="<?php echo get_the_author_meta( 'sabfacebook' );?>" target="_blank" class="facebook"></a>
+								<a href="<?php echo get_the_author_meta( 'sabinstagram' );?>" target="_blank" class="instagram"></a>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row bio-row">
 							<div class="bio" id="bio">
 								<div>
     							<?php echo get_the_author_meta('description'); ?>
