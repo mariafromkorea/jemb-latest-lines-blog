@@ -41,6 +41,10 @@ $tiny-down: "only screen and (max-width:#{$tiny-screen-down})";
 $landscape: "only screen and (orientation: landscape)";
 $portrait: "only screen and (orientation: portrait)";
 
+//Colors
+$black:#000;
+$white:#fff;
+//Fonts
 $head-gf:"Roboto Condensed", sans-serif;
 @import "mixins/mixins";
 @import "mixins/grid-mixins";
