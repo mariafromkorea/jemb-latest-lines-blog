@@ -2,10 +2,16 @@
 	padding-top:100px;
 
 	.body-content {
-		@include row();
-		max-width:800px;
-		margin:auto;
-		padding:20px;
+		width:100%;
+		text-align:left;
+		margin-bottom:15px;
+		
+		@media #{$small} {
+		display:inline-block;
+		width:49%;
+	
+		
+	}
 
 		&, * {
 			font-size:16px;
@@ -19,6 +25,9 @@
 		h1 {
 			margin-bottom:2px;
 		}
+	}
+	.lines-content {
+		text-align:center;
 	}
 	.lines-subtitle {
 		text-align:center;
@@ -48,12 +57,14 @@
 	}
 	.photo {
 		@include absolute-images(40%);
-		margin-bottom:15px;
 	}
 	.video {
 		@media #{$small} {
-			@include grid(7);
-			@include min(left);
+			display:inline-block;
+			width:49%;
+			float:left;
+			padding-right:15px;
+			margin-bottom:15px;
 		}
 	}
 	.quote {
@@ -66,7 +77,11 @@
 			text-transform:uppercase;
 		}
 		@media #{$small} {
-			@include grid(5);
+			//@include grid(5);
+			text-align:left;
+			margin-bottom:15px;
+			display:inline-block;
+			width:49%;
 
 			span {
 				display:block;
@@ -85,6 +100,72 @@
 					}
 				}
 			}
+		}
+	}
+	.photo-wrapper {
+		width:100%;
+		position:relative;
+	}
+	.profile-img{
+		position:absolute;
+		bottom:20px;
+		left:20px;
+		border:solid 2px $black;
+		box-shadow:0px 2px 4px rgba($black, .5);
+	}
+	.name-block {
+		position:absolute;
+		bottom:20px;
+		right:20px;
+		background:$black;
+		padding:10px;
+		box-shadow:0px 2px 4px rgba($black, .5);
+
+		* {
+			color:$white;
+			font-size:24px;
+		}
+
+		span {
+			display:block;
+			text-align:center;
+		}
+
+		.author {
+			text-transform:uppercase;
+		}
+	}
+	.profile {
+		background:$black;
+		margin-bottom:15px;
+
+		#bio-toggle {
+			color:$white;
+		}
+	}
+	.social {
+		float:right;
+
+		a {
+			display:block;
+			color:$white;
+		}
+	}
+	#bio{
+		background:$white;
+		max-height:0;
+		overflow:hidden;
+		display:block;
+		transition: max-height .25s ease-out;
+		font-size:17px;
+		height:auto;
+
+		> div {
+			padding:20px;
+		}
+		&.show-bio {
+			max-height:1000px;
+			height:auto;
 		}
 	}
 }
