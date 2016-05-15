@@ -18,6 +18,7 @@ function register_custom_posts_init() {
     $lines_args = array(
         'labels'             => $lines_labels,
         'public'             => true,
+        'taxonomies' => array('category'), 
         'capability_type'    => 'page',
         'has_archive'        => true,
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'page-attributes' )
